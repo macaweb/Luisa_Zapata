@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Luisa Zapata Beauty Studio. Cuidado facial personalizado y accesorios seleccionados.">
+    <meta name="theme-color" content="#f8f6f3">
     <title>Luisa Zapata | Beauty Studio</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header class="encabezado">
-        <a href="#inicio" class="logo">
+        <a href="#inicio" class="logo" aria-label="Luisa Zapata Beauty Studio, inicio">
             <span class="logo-nombre">LUISA ZAPATA</span>
             <small>BEAUTY STUDIO</small>
         </a>
@@ -25,16 +26,22 @@
         <section class="portada" id="inicio">
             <div class="contenido-portada">
                 <p class="subtitulo">BELLEZA · CUIDADO · BIENESTAR</p>
-                <h1>Un espacio para cuidar de ti y resaltar tu belleza.</h1>
+                <h1>Un espacio especial para cuidar de ti.</h1>
                 <p class="descripcion">
-                    Descubre experiencias de cuidado facial y detalles especiales
-                    elegidos para acompañar tu estilo.
+                    Tratamientos faciales personalizados y detalles que
+                    resaltan tu estilo. Conoce todo lo que tenemos para ti.
                 </p>
-                <a href="#servicios" class="boton">Explorar servicios</a>
+                <a href="#servicios" class="boton">Conoce nuestros servicios</a>
             </div>
-            <div class="imagen-portada">
-                <img src="img/luisa-portada.jpeg" alt="Luisa Zapata, Beauty Studio">
-            </div>
+            <figure class="imagen-portada">
+                <img
+                    src="img/luisa-portada-estudio.webp"
+                    alt="Luisa Zapata en su estudio de belleza"
+                    width="540"
+                    height="720"
+                    fetchpriority="high"
+                >
+            </figure>
         </section>
 
         <section class="seccion seccion-servicios" id="servicios">
@@ -46,6 +53,9 @@
 
             <div class="rejilla-servicios">
                 <article class="tarjeta-servicio">
+                    <div class="foto-servicio foto-peeling" role="img" aria-label="Espacio reservado para la fotografía del peeling">
+                        <span>Imagen del tratamiento</span>
+                    </div>
                     <div class="numero-servicio">01 <span>ESSENTIAL SKIN FACIAL</span></div>
                     <h3>Peeling</h3>
                     <p class="frase-servicio">Renovación, luminosidad y textura uniforme.</p>
@@ -71,6 +81,9 @@
                 </article>
 
                 <article class="tarjeta-servicio">
+                    <div class="foto-servicio foto-limpieza" role="img" aria-label="Espacio reservado para la fotografía de la limpieza facial profunda">
+                        <span>Imagen del tratamiento</span>
+                    </div>
                     <div class="numero-servicio">02 <span>ESSENTIAL SKIN FACIAL</span></div>
                     <h3>Limpieza facial profunda personalizada</h3>
                     <p class="frase-servicio">Una piel limpia, fresca y de apariencia más uniforme.</p>
@@ -111,7 +124,9 @@
 
             <div class="rejilla-accesorios">
                 <article class="tarjeta-accesorio">
-                    <div class="marco-accesorio"><span>PIEZA 01</span></div>
+                    <div class="marco-accesorio">
+                        <span>Imagen del accesorio</span>
+                    </div>
                     <div class="contenido-accesorio">
                         <p class="categoria-accesorio">COLECCIÓN DE ACCESORIOS</p>
                         <h3>Aros Lucila</h3>
@@ -121,7 +136,9 @@
                 </article>
 
                 <article class="tarjeta-accesorio">
-                    <div class="marco-accesorio"><span>PIEZA 02</span></div>
+                    <div class="marco-accesorio">
+                        <span>Imagen del accesorio</span>
+                    </div>
                     <div class="contenido-accesorio">
                         <p class="categoria-accesorio">COLECCIÓN DE ACCESORIOS</p>
                         <h3>Kit Océano</h3>
@@ -135,8 +152,8 @@
         <section class="seccion-contacto" id="contacto">
             <p class="subtitulo">ESTAMOS PARA TI</p>
             <h2>Tu próximo momento especial comienza aquí.</h2>
-            <p>Pronto encontrarás aquí toda la información para consultar y agendar.</p>
-            <a href="#servicios" class="boton boton-claro">Descubrir tratamientos</a>
+            <p>Escríbenos para consultar disponibilidad y agendar tu cita.</p>
+            <a href="#contacto" class="boton boton-claro">Agenda tu cita</a>
         </section>
     </main>
 
