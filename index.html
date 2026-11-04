@@ -3,76 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Luisa Zapata Beauty Studio. Servicios de limpieza facial, pestañas y cejas para resaltar tu belleza.">
+    <meta name="description" content="Luisa Zapata Beauty Studio. Cuidado facial personalizado y accesorios seleccionados.">
     <title>Luisa Zapata | Beauty Studio</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header class="encabezado">
-        <a href="index.html" class="logo">
-            <span>LUISA ZAPATA</span>
+        <a href="#inicio" class="logo">
+            <span class="logo-nombre">LUISA ZAPATA</span>
             <small>BEAUTY STUDIO</small>
         </a>
-        <nav class="menu">
-            <a href="index.html">Inicio</a>
+        <nav class="menu" aria-label="Navegación principal">
+            <a href="#inicio">Inicio</a>
             <a href="#servicios">Servicios</a>
+            <a href="#accesorios">Accesorios</a>
             <a href="#contacto">Contacto</a>
         </nav>
     </header>
 
     <main>
-        <section class="portada">
+        <section class="portada" id="inicio">
             <div class="contenido-portada">
                 <p class="subtitulo">BELLEZA · CUIDADO · BIENESTAR</p>
-                <h1>Tu belleza merece un momento especial</h1>
+                <h1>Un espacio para cuidar de ti y resaltar tu belleza.</h1>
                 <p class="descripcion">
-                    Regálate un espacio para cuidarte, consentirte y resaltar
-                    tu belleza natural con servicios pensados para ti.
+                    Descubre experiencias de cuidado facial y detalles especiales
+                    elegidos para acompañar tu estilo.
                 </p>
-                <a href="#servicios" class="boton">Conoce nuestros servicios</a>
+                <a href="#servicios" class="boton">Explorar servicios</a>
             </div>
             <div class="imagen-portada">
-                <img src="img/luisa-portada.jpeg" alt="Luisa Zapata, especialista en belleza">
+                <img src="img/luisa-portada.jpeg" alt="Luisa Zapata, Beauty Studio">
             </div>
         </section>
 
-        <section class="seccion-servicios" id="servicios">
+        <section class="seccion seccion-servicios" id="servicios">
             <div class="encabezado-seccion">
-                <p class="subtitulo">NUESTROS SERVICIOS</p>
-                <h2>Un momento para ti</h2>
-                <p>Descubre nuestros servicios de belleza y cuidado personal.</p>
+                <p class="subtitulo">CUIDADO FACIAL</p>
+                <h2>Tratamientos para tu piel</h2>
+                <p>Protocolos personalizados que comienzan con una valoración de las necesidades de tu piel.</p>
             </div>
-            <div class="tarjetas-servicios">
+
+            <div class="rejilla-servicios">
                 <article class="tarjeta-servicio">
-                    <div class="icono-servicio">✧</div>
-                    <h3>Limpieza facial</h3>
-                    <p>Cuida tu piel y disfruta de una sensación de frescura y bienestar.</p>
+                    <div class="numero-servicio">01 <span>ESSENTIAL SKIN FACIAL</span></div>
+                    <h3>Peeling</h3>
+                    <p class="frase-servicio">Renovación, luminosidad y textura uniforme.</p>
+                    <p class="descripcion-servicio">
+                        Un protocolo facial orientado a mejorar la apariencia de la textura cutánea,
+                        aportar luminosidad y favorecer la renovación superficial de la piel.
+                        La selección del agente exfoliante se realiza de acuerdo con el tipo de piel,
+                        las necesidades estéticas y la valoración previa.
+                    </p>
+                    <div class="incluye">
+                        <h4>El tratamiento incluye</h4>
+                        <ul>
+                            <li>Higienización facial.</li>
+                            <li>Preparación de la piel.</li>
+                            <li>Peeling seleccionado según valoración.</li>
+                            <li>Mascarilla calmante e hidratante.</li>
+                            <li>Fototerapia LED, cuando esté indicada.</li>
+                            <li>Producto sellante y reparador de la barrera cutánea.</li>
+                            <li>Protector solar.</li>
+                        </ul>
+                    </div>
+                    <div class="precio-servicio"><span>Valor del servicio</span><strong>$120.000</strong></div>
                 </article>
+
                 <article class="tarjeta-servicio">
-                    <div class="icono-servicio">♡</div>
-                    <h3>Pestañas</h3>
-                    <p>Realza tu mirada con servicios diseñados para destacar tu belleza natural.</p>
-                </article>
-                <article class="tarjeta-servicio">
-                    <div class="icono-servicio">✦</div>
-                    <h3>Cejas</h3>
-                    <p>Dale protagonismo a tu mirada con un diseño que resalte tus facciones.</p>
+                    <div class="numero-servicio">02 <span>ESSENTIAL SKIN FACIAL</span></div>
+                    <h3>Limpieza facial profunda personalizada</h3>
+                    <p class="frase-servicio">Una piel limpia, fresca y de apariencia más uniforme.</p>
+                    <p class="descripcion-servicio">
+                        Un protocolo de cuidado facial diseñado para ayudar a eliminar impurezas,
+                        mejorar la apariencia de los poros y favorecer una textura cutánea más
+                        suave y uniforme.
+                    </p>
+                    <div class="incluye">
+                        <h4>El tratamiento incluye</h4>
+                        <ul>
+                            <li>Higienización facial.</li>
+                            <li>Exfoliación según las necesidades de la piel.</li>
+                            <li>Desincrustación.</li>
+                            <li>Extracción de comedones e impurezas.</li>
+                            <li>Microdermoabrasión.</li>
+                            <li>Alta frecuencia.</li>
+                            <li>Fototerapia LED.</li>
+                            <li>Protector solar.</li>
+                        </ul>
+                    </div>
+                    <div class="nota-servicio">
+                        Cada sesión se adapta a las características y necesidades de la piel,
+                        previa valoración.
+                    </div>
+                    <div class="precio-servicio"><span>Valor del servicio</span><strong>$120.000</strong></div>
+                    <p class="domicilio">Servicio a domicilio: <strong>$10.000</strong></p>
                 </article>
             </div>
-            <a href="#contacto" class="boton boton-secundario">Ver todos los servicios</a>
+        </section>
+
+        <section class="seccion seccion-accesorios" id="accesorios">
+            <div class="encabezado-seccion">
+                <p class="subtitulo">DETALLES QUE ENAMORAN</p>
+                <h2>Accesorios</h2>
+                <p>Piezas especiales para darle un toque delicado y único a tu estilo.</p>
+            </div>
+
+            <div class="rejilla-accesorios">
+                <article class="tarjeta-accesorio">
+                    <div class="marco-accesorio"><span>PIEZA 01</span></div>
+                    <div class="contenido-accesorio">
+                        <p class="categoria-accesorio">COLECCIÓN DE ACCESORIOS</p>
+                        <h3>Aros Lucila</h3>
+                        <p>Un par de pendientes que combinan la calidez de las tonalidades doradas del oro, con la luminosidad de las perlas marinas. Delicadeza al 100%.</p>
+                        <strong class="precio-accesorio">$2.300</strong>
+                    </div>
+                </article>
+
+                <article class="tarjeta-accesorio">
+                    <div class="marco-accesorio"><span>PIEZA 02</span></div>
+                    <div class="contenido-accesorio">
+                        <p class="categoria-accesorio">COLECCIÓN DE ACCESORIOS</p>
+                        <h3>Kit Océano</h3>
+                        <p>Collar con dije de perla encapsulada en arco de oro y pendientes clásicos pero bellísimos. Desde el fondo del océano hasta tu joyero.</p>
+                        <strong class="precio-accesorio">$4.100</strong>
+                    </div>
+                </article>
+            </div>
         </section>
 
         <section class="seccion-contacto" id="contacto">
             <p class="subtitulo">ESTAMOS PARA TI</p>
-            <h2>Tu próximo momento de cuidado comienza aquí</h2>
-            <p>Escríbenos para conocer nuestros servicios y agendar tu cita.</p>
-            <a href="#servicios" class="boton">Conoce nuestros servicios</a>
+            <h2>Tu próximo momento especial comienza aquí.</h2>
+            <p>Pronto encontrarás aquí toda la información para consultar y agendar.</p>
+            <a href="#servicios" class="boton boton-claro">Descubrir tratamientos</a>
         </section>
     </main>
 
     <footer class="pie-pagina">
-        <a href="index.html" class="logo logo-footer">
-            <span>LUISA ZAPATA</span>
+        <a href="#inicio" class="logo logo-footer">
+            <span class="logo-nombre">LUISA ZAPATA</span>
             <small>BEAUTY STUDIO</small>
         </a>
         <p>© 2026 Luisa Zapata Beauty Studio. Todos los derechos reservados.</p>
