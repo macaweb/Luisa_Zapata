@@ -732,3 +732,126 @@ a { color: inherit; text-decoration: none; }
     .curso-contenido { grid-template-columns: 1fr; }
     .curso-datos { grid-column: auto; }
 }
+
+
+/* AJUSTE FINAL: encabezado independiente y portada sin recortar el retrato */
+.encabezado {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    min-height: 88px;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--linea);
+    backdrop-filter: blur(10px);
+}
+.portada {
+    min-height: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--marfil);
+    overflow: visible;
+}
+.portada::before { display: none; }
+.imagen-portada {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: 820px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #f3f0ec;
+}
+.imagen-portada img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 820px;
+    object-fit: contain;
+    object-position: center center;
+}
+.contenido-portada {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 12%, 980px);
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 42px 0 48px;
+    text-align: center;
+}
+.portada .descripcion { margin: 0 auto; }
+.detalle-portada { justify-content: center; margin-top: 24px; }
+
+/* Cada servicio conserva un espacio propio para incorporar su fotografía */
+.tarjeta-simple {
+    display: grid;
+    grid-template-columns: .78fr 1.22fr;
+    min-height: 250px;
+}
+.tarjeta-simple .foto-pestanas {
+    min-height: 100%;
+    aspect-ratio: auto;
+    background: linear-gradient(145deg, #eee8e1, #dcd2c8);
+}
+.tarjeta-simple .contenido-servicio { min-height: 250px; }
+.tarjeta-lifting { grid-column: 1 / -1; max-width: 700px; }
+.foto-pestanas-1 { background: linear-gradient(145deg, #eee8e1, #dcd2c8); }
+.foto-pestanas-2 { background: linear-gradient(145deg, #e9e3de, #d8cec5); }
+.foto-pestanas-3 { background: linear-gradient(145deg, #e8e0d8, #d6c9be); }
+.foto-pestanas-4 { background: linear-gradient(145deg, #eee9e4, #d9d0c7); }
+.foto-pestanas-5 { background: linear-gradient(145deg, #e9e3dc, #d8cec4); }
+
+@media (max-width: 900px) {
+    .portada { min-height: 0; padding: 0; }
+    .imagen-portada { max-height: 760px; }
+    .imagen-portada img { max-height: 760px; }
+}
+@media (max-width: 600px) {
+    .encabezado {
+        position: relative;
+        top: auto;
+        min-height: 0;
+        padding: 12px 0 0;
+        background: rgba(255,255,255,.97);
+        flex-direction: column;
+        gap: 7px;
+    }
+    .portada { min-height: 0; padding: 0; gap: 0; }
+    .imagen-portada {
+        width: 100%;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+    .imagen-portada img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center center;
+    }
+    .contenido-portada {
+        width: 86%;
+        padding: 30px 0 36px;
+        text-align: center;
+    }
+    .portada h1 { font-size: 36px; }
+    .portada .descripcion { margin: 0 auto; }
+    .detalle-portada { justify-content: center; }
+    .tarjeta-simple { grid-template-columns: 1fr; }
+    .tarjeta-simple .foto-pestanas {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+    }
+    .tarjeta-simple .contenido-servicio { min-height: 0; }
+    .tarjeta-lifting { grid-column: auto; max-width: none; }
+}
