@@ -19,14 +19,13 @@
                 <span></span><span></span><span></span>
             </summary>
             <nav class="menu-desplegable" aria-label="Navegación móvil">
-                <a href="#pestanas">Pestañas</a>
-                <a href="#facial">Facial</a>
-                <a href="#cursos">Cursos</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#pestanas" onclick="this.closest('details').removeAttribute('open')">Pestañas</a>
+                <a href="#facial" onclick="this.closest('details').removeAttribute('open')">Facial</a>
+                <a href="#cursos" onclick="this.closest('details').removeAttribute('open')">Cursos</a>
+                <a href="#contacto" onclick="this.closest('details').removeAttribute('open')">Contacto</a>
             </nav>
         </details>
         <nav class="menu" aria-label="Navegación principal">
-            <a href="#inicio">Inicio</a>
             <a href="#pestanas">Pestañas</a>
             <a href="#facial">Facial</a>
             <a href="#cursos">Cursos</a>
@@ -49,14 +48,13 @@
                     Un espacio creado para ti, donde cada detalle está pensado
                     para destacar tu belleza y hacerte sentir especial.
                 </p>
-                <a href="#pestanas" class="boton">Descubrir servicios</a>
             </div>
         </section>
 
         <section class="seccion seccion-servicios" id="pestanas">
             <div class="encabezado-seccion">
-                <p class="subtitulo">DISEÑO Y MIRADAS</p>
-                <h2>Extensiones de pestañas</h2>
+                <p class="subtitulo">PESTAÑAS</p>
+                <h2>Pestañas</h2>
                 <p class="frase-seccion">Un efecto para cada estilo, una mirada que habla por ti.</p>
             </div>
             <div class="rejilla-servicios rejilla-pestanas">
@@ -134,8 +132,8 @@
 
         <section class="seccion seccion-facial" id="facial">
             <div class="encabezado-seccion">
-                <p class="subtitulo">CUIDADO FACIAL PERSONALIZADO</p>
-                <h2>Tratamientos faciales</h2>
+                <p class="subtitulo">FACIAL</p>
+                <h2>Facial</h2>
                 <p class="frase-seccion">Cuidado profesional para una piel luminosa y saludable.</p>
             </div>
             <div class="rejilla-servicios rejilla-facial">
@@ -231,8 +229,8 @@
 
         <section class="seccion seccion-cursos" id="cursos">
             <div class="encabezado-seccion">
-                <p class="subtitulo">FORMACIÓN PROFESIONAL</p>
-                <h2>CPE – Curso profesional de extensiones de pestañas</h2>
+                <p class="subtitulo">CURSOS</p>
+                <h2>Cursos</h2>
                 <p class="frase-seccion">Formación teórico-práctica para principiantes y personas que desean profesionalizar sus técnicas.</p>
             </div>
             <div class="curso-contenido">
@@ -303,9 +301,12 @@
                     <span><small>FACEBOOK</small><strong>Luisa Zapata Beauty Studio</strong></span>
                 </a>
             </div>
-            <a href="https://wa.me/573046366517" class="boton boton-claro" target="_blank" rel="noopener noreferrer">Agendar por WhatsApp</a>
-        </section>
+            </section>
     </main>
+
+    <a class="whatsapp-flotante" href="https://wa.me/573046366517" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+        <img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="">
+    </a>
 
     <footer class="pie-pagina">
         <p class="frase-footer">Belleza que resalta tu esencia.</p>
