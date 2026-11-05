@@ -1333,3 +1333,123 @@ a { color: inherit; text-decoration: none; }
         background: #eee7df;
     }
 }
+
+
+/* AJUSTES DE NAVEGACIÓN Y CONTACTO SOLICITADOS */
+@media (max-width: 600px) {
+    .encabezado {
+        grid-template-columns: 44px minmax(0, 1fr) 44px;
+        grid-template-areas:
+            "hamburger logo spacer"
+            "menu menu menu";
+        row-gap: 7px;
+        padding: 9px 12px 8px;
+    }
+    .encabezado > .logo {
+        grid-area: logo;
+        justify-self: center;
+        align-self: center;
+    }
+    .menu-movil {
+        grid-area: hamburger;
+        justify-self: start;
+        align-self: center;
+    }
+    .encabezado > .menu {
+        grid-area: menu;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(5px, 2.2vw, 12px);
+        overflow: visible;
+        padding: 8px 0 1px;
+        margin: 0;
+        border-top: 1px solid rgba(91,72,58,.12);
+    }
+    .encabezado > .menu a {
+        flex: 0 1 auto;
+        padding: 8px 5px 7px;
+        font-size: clamp(11px, 3.1vw, 13px);
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .menu-movil .menu-desplegable {
+        top: calc(100% + 11px);
+        left: 0;
+        width: min(278px, calc(100vw - 28px));
+        padding: 10px;
+        border: 1px solid rgba(139,117,101,.28);
+        border-radius: 16px;
+        background: rgba(255,255,255,.98);
+        box-shadow: 0 18px 42px rgba(36,29,24,.20);
+        backdrop-filter: blur(16px);
+    }
+    .menu-movil .menu-desplegable a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 12px 15px;
+        color: #292522;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: .55px;
+        border: 0;
+        border-bottom: 1px solid rgba(139,117,101,.13);
+        border-radius: 9px;
+        transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .menu-movil .menu-desplegable a:last-child { border-bottom: 0; }
+    .menu-movil .menu-desplegable a::after {
+        content: "";
+        width: 5px;
+        height: 5px;
+        margin-left: auto;
+        border-radius: 50%;
+        background: #a58d79;
+        opacity: .75;
+    }
+    .menu-movil .menu-desplegable a:active {
+        padding-left: 19px;
+        color: #6f5746;
+        background: #f1ece6;
+        transform: translateX(2px);
+    }
+    .menu-movil[open] summary {
+        background: #8b7565;
+        border-color: #8b7565;
+        box-shadow: 0 5px 14px rgba(70,52,39,.2);
+    }
+    .menu-movil[open] summary span { background: #fff; }
+    .portada .boton { display: none; }
+}
+.whatsapp-flotante {
+    position: fixed;
+    right: 15px;
+    bottom: 17px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 50%;
+    background: #25D366;
+    box-shadow: 0 4px 14px rgba(0,0,0,.20);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.whatsapp-flotante img {
+    display: block;
+    width: 22px;
+    height: 22px;
+}
+.whatsapp-flotante:active {
+    transform: scale(.94);
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+@media (min-width: 601px) {
+    .whatsapp-flotante { width: 48px; height: 48px; right: 22px; bottom: 22px; }
+    .whatsapp-flotante img { width: 24px; height: 24px; }
+}
