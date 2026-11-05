@@ -1102,3 +1102,27 @@ a { color: inherit; text-decoration: none; }
     .portada .boton { margin-top: 15px; }
     .contacto-icono { width: 38px; height: 38px; flex-basis: 38px; }
 }
+
+
+/* Menú móvil centrado y con mejor legibilidad */
+@media (max-width: 600px) {
+    .encabezado .menu {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 2px;
+        overflow-x: visible;
+        padding: 0;
+        margin: 0 auto;
+    }
+    .encabezado .menu a {
+        flex: 0 1 auto;
+        padding: 11px 8px 9px;
+        font-size: 12px;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+    }
+}
