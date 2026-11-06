@@ -12,7 +12,8 @@
  document.body.appendChild(panel);
  const contenido=panel.querySelector(".carrito-contenido");
  function render(){
-  boton.querySelector(".carrito-contador").textContent=carrito.length;\n  boton.hidden=carrito.length===0;
+  boton.querySelector(".carrito-contador").textContent=carrito.length;
+  boton.hidden=carrito.length===0;
   panel.querySelector(".carrito-total strong").textContent=cop(carrito.reduce((s,x)=>s+(x.precio||0),0));
   if(!carrito.length){contenido.innerHTML='<p class="carrito-vacio">Aún no has añadido servicios. Explora las opciones y pulsa “Añadir”.</p>';return;}
   const lista=document.createElement("div");lista.className="carrito-lista";
