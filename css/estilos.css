@@ -1453,3 +1453,189 @@ a { color: inherit; text-decoration: none; }
     .whatsapp-flotante { width: 48px; height: 48px; right: 22px; bottom: 22px; }
     .whatsapp-flotante img { width: 24px; height: 24px; }
 }
+
+
+/* DISEÑO UNIFICADO: la versión web conserva la composición visual del celular */
+@media (min-width: 601px) {
+    .encabezado {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: 100%;
+        min-height: 0;
+        padding: 22px 24px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        background: rgba(255,255,255,.97);
+        border-bottom: 1px solid var(--linea);
+    }
+    .encabezado > .logo {
+        order: 0;
+        text-align: center;
+    }
+    .encabezado .logo-nombre { font-size: 21px; letter-spacing: 2.7px; }
+    .encabezado .logo small { font-size: 8px; letter-spacing: 4px; }
+    .encabezado > .menu-movil,
+    .encabezado > .boton-encabezado { display: none; }
+    .encabezado > .menu {
+        order: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: clamp(22px, 4vw, 46px);
+        padding: 0 0 14px;
+        border-top: 1px solid var(--linea);
+    }
+    .encabezado > .menu a {
+        padding: 13px 2px 5px;
+        font-size: 12px;
+        letter-spacing: .5px;
+    }
+
+    .portada {
+        min-height: 0;
+        height: auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        overflow: visible;
+        background: var(--marfil);
+    }
+    .portada::before,
+    .portada::after { display: none; }
+    .imagen-portada {
+        position: relative;
+        inset: auto;
+        width: min(100%, 540px);
+        height: auto;
+        max-width: 540px;
+        max-height: none;
+        margin: 0 auto;
+        padding: 0;
+        display: block;
+        overflow: visible;
+        background: var(--marfil);
+    }
+    .imagen-portada img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center top;
+    }
+    .contenido-portada {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: min(90%, 760px);
+        max-width: 760px;
+        margin: -8px auto 34px;
+        padding: 28px 32px 30px;
+        text-align: center;
+        background: #f8f6f3;
+        border: 0;
+        border-top: 2px solid #8b7565;
+        box-shadow: 0 8px 24px rgba(35,28,23,.07);
+        backdrop-filter: none;
+    }
+    .portada h1 { font-size: clamp(36px, 4vw, 48px); }
+    .portada .descripcion { margin: 0 auto; font-size: 13px; }
+    .detalle-portada { justify-content: center; margin-top: 20px; }
+
+    .seccion { padding: 64px 5%; }
+    .encabezado-seccion { margin-bottom: 28px; }
+    .rejilla-servicios,
+    .rejilla-pestanas,
+    .rejilla-facial {
+        width: min(100%, 760px);
+        max-width: 760px;
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .tarjeta-servicio,
+    .tarjeta-simple,
+    .rejilla-facial .tarjeta-servicio {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 0;
+        border-radius: 14px;
+    }
+    .foto-servicio,
+    .tarjeta-simple .foto-pestanas {
+        min-height: 0;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        padding: 15px;
+    }
+    .contenido-servicio,
+    .tarjeta-simple .contenido-servicio {
+        min-height: 0;
+        padding: 24px 25px 22px;
+    }
+    .tarjeta-servicio h3,
+    .tarjeta-simple h3 { font-size: 27px; }
+    .descripcion-servicio { font-size: 12px; }
+    .incluye li,
+    .lista-beneficios li { font-size: 12px; }
+    .tarjeta-lifting {
+        grid-column: auto;
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
+    }
+
+    .curso-contenido {
+        width: min(100%, 760px);
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .curso-bloque { padding: 24px 25px; }
+    .curso-bloque li { font-size: 12px; }
+    .curso-datos {
+        grid-column: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .seccion-contacto {
+        width: min(94%, 820px);
+        margin: 18px auto 20px;
+        padding: 34px 6%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+    .detalle-contacto { font-size: 36px; }
+    .contacto-datos {
+        width: min(100%, 620px);
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .contacto-item { min-height: 78px; }
+
+    .pie-pagina {
+        padding: 28px 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
+    .boton-volver-inicio { margin: 0 auto 5px; }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .imagen-portada { width: min(100%, 500px); }
+    .seccion { padding-left: 5%; padding-right: 5%; }
+}
