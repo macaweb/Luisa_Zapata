@@ -3,10 +3,16 @@
  const cop=n=>n.toLocaleString("es-CO",{style:"currency",currency:"COP",maximumFractionDigits:0});
  const guia=document.createElement("div");
  guia.className="guia-seleccion-servicios";
- guia.innerHTML='<p><strong>Elige tus servicios</strong><span>Explora las opciones y pulsa “Añadir” en los tratamientos que te interesen. Puedes escoger uno o varios.</span></p><button type="button" class="enlace-ver-seleccion" aria-label="Abrir mi selección" hidden><svg class="icono-seleccion" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12M8 12h12M8 19h12M3.5 5.5l1.2 1.2 2-2M3.5 12.5l1.2 1.2 2-2M3.5 19.5l1.2 1.2 2-2"/></svg><span>Mi selección</span><span class="carrito-contador">0</span></button>';
+ guia.innerHTML='<p><strong>Elige tus servicios</strong><span>Explora las opciones y pulsa “Añadir” en los tratamientos que te interesen. Puedes escoger uno o varios.</span></p>';
  const encabezadoServicios=document.querySelector("#pestanas .encabezado-seccion");
  if(encabezadoServicios) encabezadoServicios.append(guia);
- const boton=guia.querySelector(".enlace-ver-seleccion");
+ const boton=document.createElement("button");
+ boton.type="button";
+ boton.className="enlace-ver-seleccion seleccion-flotante";
+ boton.setAttribute("aria-label","Abrir mi selección");
+ boton.hidden=true;
+ boton.innerHTML='<svg class="icono-seleccion" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h12M8 12h12M8 19h12M3.5 5.5l1.2 1.2 2-2M3.5 12.5l1.2 1.2 2-2M3.5 19.5l1.2 1.2 2-2"/></svg><span>Mi selección</span><span class="carrito-contador">0</span>';
+ document.body.append(boton);
  const panel=document.createElement("div");panel.className="carrito-panel";panel.hidden=true;
  panel.innerHTML='<section class="carrito-ventana" role="dialog" aria-modal="true" aria-labelledby="titulo-carrito"><div class="carrito-cabecera"><h2 id="titulo-carrito">Agendar tu cita</h2><button type="button" class="carrito-cerrar" aria-label="Cerrar selección">×</button></div><div class="carrito-contenido"></div><div class="carrito-total"><span>Total de servicios con precio</span><strong>$0</strong></div><form class="formulario-cita"><label>Nombre completo<input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required maxlength="90"></label><label>Número de celular<input name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="Tu número de contacto" required maxlength="20"></label><label>Fecha preferida<input name="fecha" type="date" required></label><label>Franja horaria preferida<select name="hora" required><option value="">Selecciona una franja</option><option>En la mañana</option><option>En la tarde</option><option>Horario flexible</option></select></label><label>¿Dónde deseas tu servicio?<select name="modalidad" required><option value="">Selecciona una opción</option><option>En el estudio</option><option>A domicilio</option></select></label><label class="campo-direccion" hidden>Dirección para el servicio a domicilio<input name="direccion" type="text" autocomplete="street-address" placeholder="Dirección y barrio"></label><label>Observaciones (opcional)<textarea name="observaciones" rows="2" maxlength="300" placeholder="Cuéntanos si tienes alguna preferencia"></textarea></label><button type="submit" class="carrito-enviar">Enviar solicitud por WhatsApp</button></form><p class="carrito-ayuda">Tu solicitud se enviará a Luisa para confirmar disponibilidad y detalles de la cita.</p></section>';
  document.body.appendChild(panel);
