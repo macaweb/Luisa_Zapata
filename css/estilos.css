@@ -2100,3 +2100,39 @@ html {
     .enlace-ver-seleccion { align-self: flex-start; }
     .boton-anadir-servicio { min-height: 40px; }
 }
+
+
+/* Volver al inicio: blanco, con una respuesta visible al tocar */
+.volver-inicio-wrap .boton-volver-inicio {
+    color: #292522;
+    background: #fff;
+    border: 1px solid #d8d2cc;
+    box-shadow: 0 3px 10px rgba(30,24,20,.07);
+    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.volver-inicio-wrap .boton-volver-inicio::before {
+    color: #292522;
+    border-color: #c9c2bb;
+    transition: transform .18s ease, border-color .18s ease;
+}
+.volver-inicio-wrap .boton-volver-inicio:hover {
+    color: #171717;
+    background: #f5f5f4;
+    border-color: #aaa39c;
+    box-shadow: 0 5px 14px rgba(30,24,20,.11);
+    transform: translateY(-2px);
+}
+.volver-inicio-wrap .boton-volver-inicio:hover::before {
+    transform: translateY(-2px);
+}
+.volver-inicio-wrap .boton-volver-inicio:active {
+    color: #171717;
+    background: #eae8e5;
+    border-color: #aaa39c;
+    box-shadow: 0 1px 4px rgba(30,24,20,.12);
+    transform: scale(.95);
+}
+.volver-inicio-wrap .boton-volver-inicio:focus-visible {
+    outline: 2px solid #77716b;
+    outline-offset: 4px;
+}
