@@ -2136,3 +2136,84 @@ html {
     outline: 2px solid #77716b;
     outline-offset: 4px;
 }
+
+
+/* Selección de servicios: estilo limpio y confirmación con check */
+.guia-seleccion-servicios .enlace-ver-seleccion {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border: 1px solid #d9d0c8;
+    border-radius: 24px;
+    background: #fff;
+    color: #453a32;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.guia-seleccion-servicios .enlace-ver-seleccion:hover {
+    background: #f2eee9;
+    border-color: #b9a99b;
+    transform: translateY(-1px);
+}
+.icono-seleccion {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.guia-seleccion-servicios .enlace-ver-seleccion .carrito-contador {
+    min-width: 20px;
+    height: 20px;
+    background: #e9e1d9;
+    color: #453a32;
+    font-weight: 700;
+}
+.boton-anadir-servicio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    margin-top: 13px;
+    padding: 8px 15px;
+    border: 1px solid #b8a99c;
+    border-radius: 5px;
+    background: #fff;
+    color: #51463e;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1px;
+    cursor: pointer;
+    transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.boton-anadir-servicio:hover {
+    background: #f5f1ed;
+    border-color: #998575;
+}
+.boton-anadir-servicio:active { transform: scale(.98); }
+.boton-anadir-servicio.anadido {
+    background: #f1eee9;
+    border-color: #b9aa9d;
+    color: #4e5a45;
+}
+.marca-anadido {
+    display: inline-grid;
+    width: 18px;
+    height: 18px;
+    place-items: center;
+    border-radius: 50%;
+    background: #65765b;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+}
+@media (max-width: 600px) {
+    .boton-anadir-servicio { width: 100%; min-height: 42px; }
+}
