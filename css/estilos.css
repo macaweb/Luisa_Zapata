@@ -1958,3 +1958,26 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 600px) {
     .volver-inicio-wrap { padding: 24px 16px 27px; }
 }
+
+
+/* Contacto sobre panel negro: tipografía clara y legible */
+.seccion-contacto .contacto-item small,
+.seccion-contacto .contacto-item strong,
+.seccion-contacto a.contacto-item:hover small,
+.seccion-contacto a.contacto-item:hover strong {
+    color: #fffaf4 !important;
+    opacity: 1;
+}
+.seccion-contacto .contacto-item small {
+    font-weight: 700;
+    letter-spacing: 1.25px;
+}
+.seccion-contacto .contacto-item strong {
+    font-weight: 500;
+}
+.seccion-contacto .contacto-item {
+    border-bottom-color: rgba(255,250,244,.22);
+}
+.seccion-contacto .contacto-icono {
+    color: #fffaf4;
+}
