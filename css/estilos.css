@@ -1781,3 +1781,11 @@ a { color: inherit; text-decoration: none; }
 .carrito-enviar{width:100%;min-height:46px;border:0;border-radius:7px;background:#25a95a;color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}.carrito-enviar:disabled{opacity:.45;cursor:not-allowed}
 .carrito-ayuda{margin:12px 0 0;color:#756b63;font-size:11px;line-height:1.5;text-align:center}
 @media(max-width:600px){.carrito-flotante{left:12px;bottom:14px;min-height:46px;padding:0 14px}.carrito-panel{padding:12px;align-items:end}.carrito-ventana{max-height:85vh;padding:21px 18px;border-radius:16px 16px 10px 10px}.boton-anadir-servicio{width:100%}}
+
+/* Formulario de agendamiento del carrito */
+.formulario-cita{display:grid;gap:12px;padding-top:8px}
+.formulario-cita label{display:grid;gap:6px;color:#51473f;font-size:12px;font-weight:600}
+.formulario-cita input,.formulario-cita select,.formulario-cita textarea{width:100%;min-height:42px;padding:10px 11px;border:1px solid #d8cfc6;border-radius:7px;background:#fff;color:#292522;font:inherit;font-size:13px;box-sizing:border-box}
+.formulario-cita textarea{resize:vertical;min-height:68px}
+.formulario-cita input:focus,.formulario-cita select:focus,.formulario-cita textarea:focus{outline:2px solid #b7a18e;outline-offset:1px}
+.formulario-cita [hidden]{display:none}
