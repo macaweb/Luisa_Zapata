@@ -1764,3 +1764,20 @@ a { color: inherit; text-decoration: none; }
         white-space: nowrap;
     }
 }
+
+/* Carrito de servicios */
+.boton-anadir-servicio{display:inline-flex;align-items:center;justify-content:center;min-height:42px;margin-top:13px;padding:10px 22px;border:1px solid #8b7565;border-radius:7px;background:#292522;color:#fff;font:inherit;font-size:12px;letter-spacing:.4px;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.boton-anadir-servicio:hover{background:#6f5746}.boton-anadir-servicio:active{transform:scale(.97)}.boton-anadir-servicio.anadido{background:#8b7565}
+.carrito-flotante{position:fixed;left:18px;bottom:18px;z-index:110;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 17px;border:1px solid rgba(255,255,255,.8);border-radius:28px;background:#292522;color:#fff;box-shadow:0 5px 18px rgba(0,0,0,.2);font:inherit;font-size:12px;letter-spacing:.3px;cursor:pointer}
+.carrito-contador{min-width:21px;height:21px;display:inline-grid;place-items:center;padding:0 5px;border-radius:50%;background:#d8c7b7;color:#292522;font-size:11px;font-weight:700}
+.carrito-panel{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:18px;background:rgba(25,21,18,.48)}.carrito-panel[hidden]{display:none}
+.carrito-ventana{width:min(100%,480px);max-height:min(82vh,680px);overflow:auto;padding:25px;border:1px solid rgba(139,117,101,.25);border-radius:16px;background:#fbf9f6;color:#292522;box-shadow:0 20px 60px rgba(0,0,0,.22)}
+.carrito-cabecera{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:15px;border-bottom:1px solid rgba(139,117,101,.2)}.carrito-cabecera h2{margin:0;font-family:inherit;font-size:22px;font-weight:500}
+.carrito-cerrar{width:36px;height:36px;border:1px solid #d8cfc6;border-radius:50%;background:#fff;color:#292522;font-size:22px;cursor:pointer}
+.carrito-vacio{padding:25px 0;color:#756b63;text-align:center;font-size:13px}.carrito-lista{display:grid;gap:12px;padding:16px 0}
+.carrito-linea{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid rgba(139,117,101,.13)}.carrito-linea strong{display:block;font-size:13px;font-weight:600}.carrito-linea small{display:block;margin-top:4px;color:#756b63;font-size:12px}
+.carrito-quitar{border:0;background:transparent;color:#806957;font:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
+.carrito-total{display:flex;justify-content:space-between;gap:12px;padding:14px 0 18px;border-top:1px solid rgba(139,117,101,.2);font-size:14px}
+.carrito-enviar{width:100%;min-height:46px;border:0;border-radius:7px;background:#25a95a;color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}.carrito-enviar:disabled{opacity:.45;cursor:not-allowed}
+.carrito-ayuda{margin:12px 0 0;color:#756b63;font-size:11px;line-height:1.5;text-align:center}
+@media(max-width:600px){.carrito-flotante{left:12px;bottom:14px;min-height:46px;padding:0 14px}.carrito-panel{padding:12px;align-items:end}.carrito-ventana{max-height:85vh;padding:21px 18px;border-radius:16px 16px 10px 10px}.boton-anadir-servicio{width:100%}}
