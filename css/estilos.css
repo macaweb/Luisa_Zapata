@@ -2016,3 +2016,87 @@ html {
     outline: 3px solid #cbbcaf;
     outline-offset: 4px;
 }
+
+
+/* Selección de servicios: guía integrada en el contenido, nunca flotante */
+.guia-seleccion-servicios {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: min(100%, 1000px);
+    margin: 22px auto 0;
+    padding: 15px 18px;
+    border-left: 3px solid #a58b76;
+    background: #f7f4f0;
+    text-align: left;
+}
+.guia-seleccion-servicios p {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    color: #62564d;
+    font-size: 12px;
+    line-height: 1.55;
+}
+.guia-seleccion-servicios p strong {
+    color: #3d332c;
+    font-size: 13px;
+    font-weight: 700;
+}
+.enlace-ver-seleccion {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    color: #765b47;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+.enlace-ver-seleccion[hidden] { display: none !important; }
+.enlace-ver-seleccion .carrito-contador {
+    display: inline-grid;
+    place-items: center;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: #806957;
+    color: #fff;
+    font-size: 11px;
+    text-decoration: none;
+}
+.boton-anadir-servicio {
+    min-height: 38px;
+    padding: 8px 14px;
+    border: 1px solid #a58b76;
+    border-radius: 4px;
+    background: transparent;
+    color: #594638;
+    font-size: 11px;
+    letter-spacing: .15px;
+}
+.boton-anadir-servicio:hover,
+.boton-anadir-servicio.anadido {
+    background: #806957;
+    border-color: #806957;
+    color: #fff;
+}
+@media (max-width: 600px) {
+    .guia-seleccion-servicios {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 17px;
+        padding: 13px 14px;
+    }
+    .enlace-ver-seleccion { align-self: flex-start; }
+    .boton-anadir-servicio { min-height: 40px; }
+}
