@@ -2217,3 +2217,64 @@ html {
 @media (max-width: 600px) {
     .boton-anadir-servicio { width: 100%; min-height: 42px; }
 }
+
+
+/* Acceso flotante a Mi selección: esquina inferior izquierda */
+.seleccion-flotante.enlace-ver-seleccion {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    z-index: 120;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 0 15px;
+    border: 1px solid #ded7d0;
+    border-radius: 28px;
+    background: rgba(255,255,255,.97);
+    color: #3d332c;
+    box-shadow: 0 5px 20px rgba(35,27,21,.16);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.seleccion-flotante.enlace-ver-seleccion:hover {
+    background: #f5f1ed;
+    box-shadow: 0 7px 22px rgba(35,27,21,.2);
+    transform: translateY(-2px);
+}
+.seleccion-flotante .icono-seleccion {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.seleccion-flotante .carrito-contador {
+    display: inline-grid;
+    min-width: 21px;
+    height: 21px;
+    place-items: center;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: #e9e1d9;
+    color: #453a32;
+    font-size: 11px;
+    font-weight: 700;
+}
+.seleccion-flotante[hidden] { display: none !important; }
+@media (max-width: 600px) {
+    .seleccion-flotante.enlace-ver-seleccion {
+        left: 12px;
+        bottom: 14px;
+        min-height: 46px;
+        padding: 0 13px;
+    }
+}
