@@ -1907,3 +1907,21 @@ a { color: inherit; text-decoration: none; }
     .seccion-contacto .contacto-item { padding: 14px 2px; }
     .boton-volver-inicio { margin: 0 auto 5px; }
 }
+
+
+/* Mejorar contraste de los rótulos del bloque de contacto */
+.seccion-contacto .contacto-item small {
+    color: #292522;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.25px;
+    opacity: 1;
+}
+.seccion-contacto .contacto-item strong {
+    color: #292522;
+    font-weight: 500;
+}
+.seccion-contacto a.contacto-item:hover small,
+.seccion-contacto a.contacto-item:hover strong {
+    color: #292522;
+}
