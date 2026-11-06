@@ -1785,7 +1785,7 @@ a { color: inherit; text-decoration: none; }
 /* Formulario de agendamiento del carrito */
 .formulario-cita{display:grid;gap:12px;padding-top:8px}
 .formulario-cita label{display:grid;gap:6px;color:#51473f;font-size:12px;font-weight:600}
-.formulario-cita input,.formulario-cita select,.formulario-cita textarea{width:100%;min-height:42px;padding:10px 11px;border:1px solid #d8cfc6;border-radius:7px;background:#fff;color:#292522;font:inherit;font-size:13px;box-sizing:border-box}
+.formulario-cita input,.formulario-cita select,.formulario-cita textarea{width:100%;min-height:44px;padding:10px 11px;border:1px solid #d8cfc6;border-radius:7px;background:#fff;color:#292522;font:inherit;font-size:16px;box-sizing:border-box}
 .formulario-cita textarea{resize:vertical;min-height:68px}
 .formulario-cita input:focus,.formulario-cita select:focus,.formulario-cita textarea:focus{outline:2px solid #b7a18e;outline-offset:1px}
 .formulario-cita [hidden]{display:none}
