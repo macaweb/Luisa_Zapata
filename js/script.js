@@ -28,7 +28,7 @@
  function actualizar(){document.querySelectorAll(".boton-anadir-servicio").forEach(b=>{const on=carrito.some(x=>x.id===b.dataset.itemId);b.innerHTML=on?'<span class="marca-anadido" aria-hidden="true">✓</span><span>Añadido</span>':'Añadir';b.classList.toggle("anadido",on);b.setAttribute("aria-pressed",String(on));});}
  function crearBoton(destino,nombre,precio,id){const b=document.createElement("button");b.type="button";b.className="boton-anadir-servicio";b.dataset.itemId=id;b.textContent="Añadir";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{const i=carrito.findIndex(x=>x.id===id);if(i>=0)carrito.splice(i,1);else carrito.push({id,nombre,precio});actualizar();render();});destino.append(b);}
  document.querySelectorAll("#pestanas .tarjeta-servicio,#facial .tarjeta-servicio").forEach((card,i)=>{const nombre=card.querySelector("h3")?.textContent.trim(),strong=card.querySelector(".precio-servicio strong"),destino=card.querySelector(".precio-servicio");if(nombre&&strong&&destino){const digits=strong.textContent.replace(/[^0-9]/g,"");crearBoton(destino,nombre,digits?Number(digits):null,"servicio-"+i);}});
- const curso=document.querySelector("#cursos .curso-datos");if(curso)crearBoton(curso,"CPE – Curso profesional de extensiones de pestañas",null,"curso-cpe");
+ const curso=document.querySelector("#cursos .curso-datos");if(curso)crearBoton(curso,"Formación profesional personalizada en extensiones de pestañas",1400000,"curso-extensiones-profesional");
  boton.addEventListener("click",()=>{panel.hidden=false;render();});
  panel.querySelector(".carrito-cerrar").addEventListener("click",()=>panel.hidden=true);
  panel.addEventListener("click",e=>{if(e.target===panel)panel.hidden=true;});
