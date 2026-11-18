@@ -25,8 +25,8 @@
   const lista=document.createElement("div");lista.className="carrito-lista";
   carrito.forEach((item,i)=>{const fila=document.createElement("div");fila.className="carrito-linea";const datos=document.createElement("div");const nombre=document.createElement("strong");nombre.textContent=item.nombre;const precio=document.createElement("small");precio.textContent=item.precio===null?"Valor por consultar":cop(item.precio);datos.append(nombre,precio);const quitar=document.createElement("button");quitar.type="button";quitar.className="carrito-quitar";quitar.textContent="Quitar";quitar.addEventListener("click",()=>{carrito.splice(i,1);actualizar();render();});fila.append(datos,quitar);lista.append(fila);});contenido.replaceChildren(lista);
  }
- function actualizar(){document.querySelectorAll(".boton-anadir-servicio").forEach(b=>{const on=carrito.some(x=>x.id===b.dataset.itemId);b.innerHTML=on?'<span class="marca-anadido" aria-hidden="true">✓</span><span>Añadido</span>':'Añadir';b.classList.toggle("anadido",on);b.setAttribute("aria-pressed",String(on));});}
- function crearBoton(destino,nombre,precio,id){const b=document.createElement("button");b.type="button";b.className="boton-anadir-servicio";b.dataset.itemId=id;b.textContent="Añadir";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{const i=carrito.findIndex(x=>x.id===id);if(i>=0)carrito.splice(i,1);else carrito.push({id,nombre,precio});actualizar();render();});destino.append(b);}
+ function actualizar(){document.querySelectorAll(".boton-anadir-servicio").forEach(b=>{const on=carrito.some(x=>x.id===b.dataset.itemId);b.innerHTML=on?'<span class="marca-anadido" aria-hidden="true">✓</span><span>Añadido</span>':'<span>Añadir</span><span class="simbolo-anadir" aria-hidden="true">＋</span>';b.classList.toggle("anadido",on);b.setAttribute("aria-pressed",String(on));const card=b.closest(".tarjeta-servicio,.curso-contenido");if(card)card.classList.toggle("servicio-seleccionado",on);});}
+ function crearBoton(destino,nombre,precio,id){const b=document.createElement("button");b.type="button";b.className="boton-anadir-servicio";b.dataset.itemId=id;b.textContent="Añadir";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{const i=carrito.findIndex(x=>x.id===id);if(i>=0)carrito.splice(i,1);else carrito.push({id,nombre,precio});actualizar();render();mostrarAviso(i>=0?"Se quitó de tu selección":"¡Añadido a tu selección!");});destino.append(b);}
  document.querySelectorAll("#pestanas .tarjeta-servicio,#facial .tarjeta-servicio").forEach((card,i)=>{const nombre=card.querySelector("h3")?.textContent.trim(),strong=card.querySelector(".precio-servicio strong"),destino=card.querySelector(".precio-servicio");if(nombre&&strong&&destino){const digits=strong.textContent.replace(/[^0-9]/g,"");crearBoton(destino,nombre,digits?Number(digits):null,"servicio-"+i);}});
  const curso=document.querySelector("#cursos .curso-datos");if(curso)crearBoton(curso,"Formación profesional personalizada en extensiones de pestañas",1400000,"curso-extensiones-profesional");
  boton.addEventListener("click",()=>{panel.hidden=false;render();});
@@ -50,5 +50,29 @@
   msg+="\n\nQuedo pendiente de la confirmación. ¡Gracias!";
   window.open("https://wa.me/"+numeroWhatsApp+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");
  });
+
+ // Microinteracciones generales: aviso, navegación activa, entrada suave e imágenes ampliables.
+ const aviso=document.createElement("div");aviso.className="aviso-interaccion";aviso.setAttribute("role","status");aviso.setAttribute("aria-live","polite");document.body.append(aviso);
+ let avisoTimer;
+ function mostrarAviso(mensaje){aviso.textContent=mensaje;aviso.classList.add("visible");clearTimeout(avisoTimer);avisoTimer=setTimeout(()=>aviso.classList.remove("visible"),2100);}
+ const cta=document.querySelector(".boton-agendar");
+ if(cta)cta.addEventListener("click",()=>{const destino=document.querySelector("#pestanas");if(destino){destino.classList.add("destello-seccion");setTimeout(()=>destino.classList.remove("destello-seccion"),1500);}});
+ const secciones=[...document.querySelectorAll("main section[id]")], enlaces=[...document.querySelectorAll(".menu a,.menu-desplegable a")];
+ if("IntersectionObserver" in window){
+  const observador=new IntersectionObserver(entradas=>entradas.forEach(e=>{if(e.isIntersecting){e.target.classList.add("aparecio");const activo=enlaces.find(a=>a.getAttribute("href")==="#"+e.target.id);if(activo){enlaces.forEach(a=>a.classList.remove("nav-activo"));enlaces.filter(a=>a.getAttribute("href")==="#"+e.target.id).forEach(a=>a.classList.add("nav-activo"));}}}),{threshold:.12});
+  secciones.forEach(s=>{s.classList.add("revelar-scroll");observador.observe(s);});
+ }
+ // Visor ampliado para portada, imágenes de servicios y curso.
+ const visor=document.createElement("div");visor.className="visor-imagen";visor.hidden=true;visor.innerHTML='<button type="button" class="visor-cerrar" aria-label="Cerrar imagen">×</button><img alt=""><span class="visor-pista">Pulsa fuera de la imagen para cerrar</span>';document.body.append(visor);
+ const visorImg=visor.querySelector("img");
+ function abrirImagen(src,alt){if(!src)return;visorImg.src=src;visorImg.alt=alt||"Imagen ampliada";visor.hidden=false;document.body.classList.add("visor-abierto");visor.querySelector(".visor-cerrar").focus();}
+ function cerrarImagen(){visor.hidden=true;visorImg.removeAttribute("src");document.body.classList.remove("visor-abierto");}
+ visor.addEventListener("click",e=>{if(e.target===visor||e.target.closest(".visor-cerrar"))cerrarImagen();});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!visor.hidden)cerrarImagen();});
+ document.querySelectorAll(".imagen-portada img,.imagen-curso img").forEach(img=>{img.classList.add("imagen-interactiva");img.tabIndex=0;img.setAttribute("role","button");img.setAttribute("aria-label","Ampliar imagen: "+(img.alt||""));img.addEventListener("click",()=>abrirImagen(img.currentSrc||img.src,img.alt));img.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abrirImagen(img.currentSrc||img.src,img.alt);}});});
+ document.querySelectorAll(".foto-servicio[role='img']").forEach(foto=>{foto.classList.add("foto-interactiva");foto.tabIndex=0;foto.setAttribute("aria-label",(foto.getAttribute("aria-label")||"Imagen del servicio")+". Pulsa para ampliar");const bg=getComputedStyle(foto).backgroundImage;const match=bg.match(/url\(["']?(.*?)["']?\)/);if(match){foto.addEventListener("click",()=>abrirImagen(match[1],foto.getAttribute("aria-label")));foto.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abrirImagen(match[1],foto.getAttribute("aria-label"));}});}});
+ // Realce visual para cada tarjeta al pasar el cursor o seleccionarla.
+ document.querySelectorAll(".tarjeta-servicio").forEach(card=>card.addEventListener("pointerdown",()=>{card.classList.add("tarjeta-presionada");setTimeout(()=>card.classList.remove("tarjeta-presionada"),220);}));
+
  render();
 })();
