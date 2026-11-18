@@ -2470,3 +2470,27 @@ html { scroll-padding-top: 145px; }
     background: #e9ded4 !important;
     color: #59483c !important;
 }
+
+
+/* Navegación con tipografía Jost: limpia, elegante y menos genérica */
+.menu a,
+.menu-desplegable a {
+    font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.05px !important;
+}
+.menu a {
+    padding: 10px 0 9px !important;
+}
+.menu a::after {
+    height: 1.5px !important;
+    background: #9b806c !important;
+}
+.menu a.nav-activo,
+.menu a:hover {
+    color: #8c715e !important;
+}
+.menu-desplegable a {
+    letter-spacing: 1.15px !important;
+}
