@@ -2278,3 +2278,55 @@ html {
         padding: 0 13px;
     }
 }
+
+
+/* Experiencia interactiva y elegante */
+.acciones-portada{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.boton-agendar{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:54px;padding:0 23px;border:1px solid #806957;border-radius:999px;background:#292522;color:#fffaf4;text-decoration:none;font-size:12px;font-weight:650;letter-spacing:.7px;box-shadow:0 9px 22px rgba(41,37,34,.17);animation:flotarAgendar 2.8s ease-in-out infinite;transition:background .22s ease,box-shadow .22s ease,transform .22s ease}
+.boton-agendar:hover{background:#806957;box-shadow:0 13px 28px rgba(41,37,34,.22);transform:translateY(-4px) scale(1.025)}
+.boton-agendar:active{transform:scale(.96)}
+.flecha-agendar{display:grid;place-items:center;width:25px;height:25px;border:1px solid rgba(255,250,244,.55);border-radius:50%;font-size:15px;transition:transform .22s ease}
+.boton-agendar:hover .flecha-agendar{transform:rotate(45deg)}
+.nota-agendar{color:#75695f;font-size:11px;line-height:1.5}
+@keyframes flotarAgendar{0%,100%{box-shadow:0 8px 20px rgba(41,37,34,.15);transform:translateY(0)}50%{box-shadow:0 12px 26px rgba(41,37,34,.22);transform:translateY(-4px)}}
+.menu a,.menu-desplegable a,.boton-encabezado,.contacto-item,.whatsapp-flotante{transition:color .22s ease,background .22s ease,transform .22s ease,box-shadow .22s ease}
+.menu a{position:relative}
+.menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:1px;background:#806957;transition:right .22s ease}
+.menu a:hover::after,.menu a.nav-activo::after{right:0}
+.menu a.nav-activo{color:#806957}
+.boton-encabezado:hover{transform:translateY(-2px);box-shadow:0 7px 17px rgba(41,37,34,.15)}
+.imagen-portada img,.imagen-curso img{cursor:zoom-in;transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.imagen-portada{overflow:hidden}
+.imagen-portada:hover img{transform:scale(1.045);filter:saturate(1.04)}
+.foto-interactiva{cursor:zoom-in;transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .35s ease,box-shadow .35s ease}
+.tarjeta-servicio{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.tarjeta-servicio:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(45,35,28,.10)}
+.tarjeta-servicio .foto-servicio{transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.tarjeta-servicio:hover .foto-interactiva{filter:saturate(1.08) brightness(1.035)}
+.tarjeta-servicio.servicio-seleccionado{outline:2px solid rgba(128,105,87,.7);outline-offset:3px;box-shadow:0 10px 26px rgba(128,105,87,.12)}
+.tarjeta-presionada{transform:scale(.99)!important}
+.boton-anadir-servicio{gap:9px;transition:transform .2s ease,background .22s ease,border-color .22s ease,color .22s ease,box-shadow .22s ease}
+.boton-anadir-servicio:hover{transform:translateY(-2px);box-shadow:0 5px 13px rgba(60,45,34,.10)}
+.boton-anadir-servicio:active{transform:scale(.96)}
+.boton-anadir-servicio.anadido{background:#e9eee7;border-color:#9eae98;color:#40523b;box-shadow:inset 0 0 0 1px rgba(101,118,91,.10)}
+.simbolo-anadir{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:50%;background:rgba(128,105,87,.12);font-size:16px;line-height:1}
+.seleccion-flotante.enlace-ver-seleccion{animation:entradaSeleccion .35s ease both}
+.seleccion-flotante.enlace-ver-seleccion:hover{transform:translateY(-4px) scale(1.035)}
+@keyframes entradaSeleccion{from{opacity:0;transform:translateY(14px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.aviso-interaccion{position:fixed;left:50%;bottom:25px;z-index:150;max-width:calc(100% - 32px);padding:12px 19px;border:1px solid #ded5cc;border-radius:999px;background:rgba(41,37,34,.96);color:#fffaf4;font-size:12px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;pointer-events:none;transform:translate(-50%,12px);transition:opacity .22s ease,transform .22s ease}
+.aviso-interaccion.visible{opacity:1;transform:translate(-50%,0)}
+.visor-imagen{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:55px 22px 48px;background:rgba(20,18,16,.91);backdrop-filter:blur(8px);opacity:1;transition:opacity .2s ease}
+.visor-imagen[hidden]{display:none}
+.visor-imagen img{display:block;max-width:min(100%,1100px);max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 15px 55px rgba(0,0,0,.35);animation:zoomImagen .25s ease}
+.visor-cerrar{position:absolute;top:20px;right:22px;width:43px;height:43px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:28px;cursor:pointer;transition:transform .2s ease,background .2s ease}
+.visor-cerrar:hover{background:rgba(255,255,255,.22);transform:rotate(90deg)}
+.visor-pista{position:absolute;bottom:19px;color:rgba(255,255,255,.75);font-size:11px;letter-spacing:.3px}
+body.visor-abierto{overflow:hidden}
+@keyframes zoomImagen{from{opacity:.6;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.revelar-scroll{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.revelar-scroll.aparecio{opacity:1;transform:translateY(0)}
+.destello-seccion .encabezado-seccion h2{animation:destelloTitulo 1.2s ease}
+@keyframes destelloTitulo{0%,100%{color:inherit}35%{color:#9b7d65;text-shadow:0 0 20px rgba(155,125,101,.22)}}
+button:focus-visible,a:focus-visible,[tabindex="0"]:focus-visible{outline:2px solid #9a806b;outline-offset:4px}
+@media(max-width:700px){.acciones-portada{gap:11px;margin-top:22px}.boton-agendar{min-height:51px;padding:0 19px}.nota-agendar{max-width:220px}.aviso-interaccion{bottom:76px}.visor-imagen{padding:58px 12px 48px}.visor-imagen img{max-height:76vh}.tarjeta-servicio:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.revelar-scroll{opacity:1;transform:none}}
