@@ -2428,3 +2428,45 @@ html { scroll-padding-top: 145px; }
     .seccion-contacto .contacto-item small { font-size: 9px !important; }
     .seccion-contacto .contacto-item strong { font-size: 12px !important; }
 }
+
+
+/* Estado añadido e icono de selección con estética de spa facial */
+.boton-anadir-servicio.anadido {
+    background: #f7f3ef !important;
+    border-color: #b8a596 !important;
+    color: #514238 !important;
+    box-shadow: inset 0 0 0 1px rgba(128,105,87,.08) !important;
+}
+.boton-anadir-servicio .marca-anadido {
+    display: inline-grid !important;
+    width: 21px !important;
+    height: 21px !important;
+    place-items: center !important;
+    border-radius: 7px !important;
+    border: 1px solid #9d8877 !important;
+    background: transparent !important;
+    color: #806957 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+}
+.seleccion-flotante.enlace-ver-seleccion {
+    border-color: #d8c9bd !important;
+    background: rgba(250,247,243,.98) !important;
+    color: #55463b !important;
+    box-shadow: 0 7px 23px rgba(65,48,37,.15) !important;
+    letter-spacing: .15px;
+}
+.seleccion-flotante .icono-seleccion {
+    width: 25px !important;
+    height: 25px !important;
+    fill: none !important;
+    stroke: #987c68 !important;
+    stroke-width: 1.35 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+.seleccion-flotante .carrito-contador {
+    background: #e9ded4 !important;
+    color: #59483c !important;
+}
