@@ -2330,3 +2330,101 @@ body.visor-abierto{overflow:hidden}
 button:focus-visible,a:focus-visible,[tabindex="0"]:focus-visible{outline:2px solid #9a806b;outline-offset:4px}
 @media(max-width:700px){.acciones-portada{gap:11px;margin-top:22px}.boton-agendar{min-height:51px;padding:0 19px}.nota-agendar{max-width:220px}.aviso-interaccion{bottom:76px}.visor-imagen{padding:58px 12px 48px}.visor-imagen img{max-height:76vh}.tarjeta-servicio:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.revelar-scroll{opacity:1;transform:none}}
+
+
+/* Navegación fija durante el desplazamiento */
+.encabezado {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 250 !important;
+    background: rgba(255,255,255,.97) !important;
+    box-shadow: 0 5px 18px rgba(38,31,26,.055);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+html { scroll-padding-top: 145px; }
+#inicio, #pestanas, #facial, #cursos, #contacto { scroll-margin-top: 145px; }
+@media (max-width: 600px) {
+    .encabezado {
+        position: sticky !important;
+        top: 0 !important;
+        min-height: 0;
+        padding: 10px 12px 0 !important;
+        gap: 8px !important;
+    }
+    html { scroll-padding-top: 125px; }
+    #inicio, #pestanas, #facial, #cursos, #contacto { scroll-margin-top: 125px; }
+}
+
+/* Panel de contacto más uniforme y cuidado */
+.seccion-contacto .contacto-datos {
+    width: min(100% - 36px, 590px) !important;
+    margin: 30px auto 0 !important;
+    padding: 12px 25px !important;
+    border: 1px solid rgba(255,250,244,.20) !important;
+    border-radius: 15px !important;
+    background: rgba(255,250,244,.065) !important;
+    box-shadow: 0 14px 34px rgba(0,0,0,.13), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.seccion-contacto .contacto-item {
+    display: grid !important;
+    grid-template-columns: 42px minmax(0,1fr) !important;
+    align-items: center !important;
+    gap: 15px !important;
+    min-height: 76px !important;
+    padding: 13px 2px !important;
+    border-bottom: 1px solid rgba(255,250,244,.17) !important;
+}
+.seccion-contacto .contacto-item:last-child { border-bottom: 0 !important; }
+.seccion-contacto .contacto-icono {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 50% !important;
+    background: rgba(255,250,244,.09) !important;
+}
+.seccion-contacto .contacto-icono img { width: 19px !important; height: 19px !important; }
+.seccion-contacto .contacto-item > span:last-child {
+    display: grid !important;
+    gap: 5px !important;
+    min-width: 0;
+}
+.seccion-contacto .contacto-item small {
+    display: block !important;
+    margin: 0 !important;
+    color: #cbbcaf !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 1.45px !important;
+}
+.seccion-contacto .contacto-item strong {
+    display: block !important;
+    margin: 0 !important;
+    color: #fffaf4 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.55 !important;
+    letter-spacing: .1px !important;
+    overflow-wrap: anywhere;
+}
+.seccion-contacto a.contacto-item:hover {
+    padding-left: 7px !important;
+    background: rgba(255,250,244,.045) !important;
+    border-radius: 8px;
+}
+@media (max-width: 600px) {
+    .seccion-contacto .contacto-datos {
+        width: calc(100% - 30px) !important;
+        margin-top: 24px !important;
+        padding: 8px 16px !important;
+        border-radius: 13px !important;
+    }
+    .seccion-contacto .contacto-item { min-height: 70px !important; gap: 12px !important; }
+    .seccion-contacto .contacto-item small { font-size: 9px !important; }
+    .seccion-contacto .contacto-item strong { font-size: 12px !important; }
+}
