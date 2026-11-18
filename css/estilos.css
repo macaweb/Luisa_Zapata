@@ -2609,3 +2609,15 @@ html { scroll-padding-top: 145px; }
     }
     .pie-pagina .frase-footer { font-size: 13px !important; }
 }
+
+
+/* Eliminación definitiva del antiguo botón Volver al inicio */
+.volver-inicio-wrap,
+.boton-volver-inicio {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
