@@ -2521,3 +2521,91 @@ html { scroll-padding-top: 145px; }
         letter-spacing: 1.15px !important;
     }
 }
+
+
+/* UNIFICACIÓN VISUAL SOLICITADA — prioridad móvil */
+.encabezado {
+    position: sticky !important;
+    position: -webkit-sticky !important;
+    top: 0 !important;
+    z-index: 500 !important;
+}
+.encabezado .menu a,
+.encabezado .menu-desplegable a,
+.seccion-contacto .contacto-item,
+.seccion-contacto .contacto-item small,
+.seccion-contacto .contacto-item strong,
+.pie-pagina,
+.pie-pagina p,
+.pie-pagina .frase-footer,
+.pie-pagina .logo-footer,
+.pie-pagina .logo-footer small {
+    font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+    font-style: normal !important;
+}
+.seccion-contacto .contacto-item small {
+    font-weight: 500 !important;
+    letter-spacing: 1.35px !important;
+}
+.seccion-contacto .contacto-item strong {
+    font-weight: 400 !important;
+    letter-spacing: .15px !important;
+}
+.pie-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+}
+.pie-pagina .frase-footer {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: .2px !important;
+}
+.pie-pagina .logo-footer .logo-nombre {
+    font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    letter-spacing: 2px !important;
+}
+.pie-pagina .logo-footer small {
+    font-size: 8px !important;
+    letter-spacing: 2.5px !important;
+}
+@media (max-width: 600px) {
+    .encabezado {
+        padding: 9px 12px 8px !important;
+        gap: 7px !important;
+    }
+    .encabezado .logo-nombre {
+        font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+        font-weight: 500 !important;
+        letter-spacing: 2px !important;
+    }
+    .encabezado .menu-movil .menu-desplegable a {
+        font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        letter-spacing: 1.2px !important;
+    }
+    .seccion-contacto .contacto-item small,
+    .seccion-contacto .contacto-item strong {
+        font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+    }
+    .pie-pagina {
+        padding: 25px 18px !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 9px !important;
+        text-align: center !important;
+    }
+    .pie-pagina p {
+        max-width: 100%;
+        font-size: 10px !important;
+    }
+    .pie-pagina .frase-footer { font-size: 13px !important; }
+}
