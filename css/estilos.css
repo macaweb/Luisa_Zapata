@@ -2494,3 +2494,30 @@ html { scroll-padding-top: 145px; }
 .menu-desplegable a {
     letter-spacing: 1.15px !important;
 }
+
+
+/* Corrección específica para el menú real de celulares */
+@media (max-width: 600px) {
+    .encabezado .menu-movil .menu-desplegable a,
+    .encabezado .menu-movil .menu-desplegable a:visited {
+        font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        letter-spacing: 1.35px !important;
+        line-height: 1.35 !important;
+        color: #514238 !important;
+    }
+    .encabezado .menu-movil .menu-desplegable a:active,
+    .encabezado .menu-movil .menu-desplegable a:hover {
+        color: #806957 !important;
+        background: #f4eee8 !important;
+    }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+    .encabezado .menu a {
+        font-family: 'Jost', 'Trebuchet MS', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        letter-spacing: 1.15px !important;
+    }
+}
