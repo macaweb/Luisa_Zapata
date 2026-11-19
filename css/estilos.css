@@ -3283,3 +3283,11 @@ a[href="#inicio"].boton-volver-inicio {
 .modalidad-check{display:grid;place-items:center;flex:0 0 19px;width:19px;height:19px;border:1px solid #d8c9bd;border-radius:50%;color:transparent;font-size:11px;transition:all .2s ease;}
 .opcion-modalidad>input:checked+.modalidad-contenido .modalidad-check{border-color:#987c68;background:#987c68;color:#fff;transform:scale(1.05);}
 @media(max-width:390px){.opciones-modalidad{grid-template-columns:1fr;}.modalidad-contenido{min-height:68px;}}
+
+
+/* Invitación continua a añadir servicios, incluso antes de interactuar */
+.boton-anadir-servicio:not(.anadido){animation:invitarAnadirServicio 3.1s ease-in-out infinite;}
+@keyframes invitarAnadirServicio{0%,72%,100%{transform:translateY(0) scale(1)}6%{transform:translateY(-3px) scale(1.045)}13%{transform:translateY(0) scale(1)}20%{transform:translateY(-2px) scale(1.025)}27%{transform:translateY(0) scale(1)}}
+.boton-anadir-servicio:not(.anadido):hover{animation-play-state:paused;transform:translateY(-3px) scale(1.045);}
+.boton-anadir-servicio.animar-toque{animation:toqueAnadido .38s ease!important;}
+@media(prefers-reduced-motion:reduce){.boton-anadir-servicio:not(.anadido){animation:none!important;}}
