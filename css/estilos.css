@@ -3019,3 +3019,72 @@ a[href="#inicio"].boton-volver-inicio {
     .calendario-dias-semana,.calendario-dias { gap: 3px; }
     .dia-calendario { font-size: 12px; }
 }
+
+
+/* Microinteracciones visibles para los botones de servicios y solicitud */
+.boton-anadir-servicio {
+  position: relative;
+  transform-origin: center;
+  transition: background .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.boton-anadir-servicio:hover {
+  animation: reboteAnadir .55s ease both;
+  background: #806957;
+  color: #fffdfa;
+  box-shadow: 0 7px 16px rgba(91, 69, 49, .18);
+}
+.boton-anadir-servicio:active,
+.boton-anadir-servicio.animar-toque {
+  animation: toqueAnadir .58s ease both;
+}
+.carrito-enviar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #806957;
+  color: #fffdfa;
+  border: 1px solid #806957;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: .25px;
+  box-shadow: 0 4px 12px rgba(91, 69, 49, .13);
+  transition: background .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.carrito-enviar:hover {
+  background: #a8894d;
+  border-color: #a8894d;
+  color: #fffdfa;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 17px rgba(137, 105, 48, .24);
+}
+.carrito-enviar:active,
+.carrito-enviar.animar-toque {
+  animation: toqueEnviar .62s ease both;
+  background: #c5a45f;
+  border-color: #c5a45f;
+  color: #292522;
+}
+@keyframes reboteAnadir {
+  0%,100% { transform: translateY(0) scale(1); }
+  35% { transform: translateY(-5px) scale(1.025); }
+  65% { transform: translateY(1px) scale(.99); }
+}
+@keyframes toqueAnadir {
+  0% { transform: scale(1); }
+  35% { transform: translateY(-4px) scale(1.045); }
+  70% { transform: translateY(1px) scale(.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes toqueEnviar {
+  0% { transform: scale(1); }
+  35% { transform: translateY(-4px) scale(1.035); }
+  70% { transform: translateY(1px) scale(.985); }
+  100% { transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .boton-anadir-servicio:hover,
+  .boton-anadir-servicio:active,
+  .boton-anadir-servicio.animar-toque,
+  .carrito-enviar:active,
+  .carrito-enviar.animar-toque { animation: none; }
+}
