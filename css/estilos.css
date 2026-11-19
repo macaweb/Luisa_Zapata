@@ -2743,3 +2743,47 @@ a[href="#inicio"].boton-volver-inicio {
     margin: 0 !important;
     padding: 0 !important;
 }
+
+
+/* Íconos discretos en la navegación */
+.menu a, .menu-desplegable a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: #9b8878;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    line-height: 1;
+    transition: color .2s ease, transform .2s ease;
+}
+.menu a:hover .nav-icon, .menu-desplegable a:hover .nav-icon {
+    color: var(--negro);
+    transform: translateY(-1px);
+}
+
+/* Selector de fecha con la paleta marfil, beige y tonos cálidos */
+.formulario-cita input[type="date"] {
+    color-scheme: light;
+    accent-color: #a58f7c;
+    background-color: var(--marfil);
+    border: 1px solid #d8cfc6;
+    color: var(--negro-suave);
+    cursor: pointer;
+}
+.formulario-cita input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: .78;
+    cursor: pointer;
+    filter: sepia(.22) saturate(.65);
+}
+.formulario-cita input[type="date"]:focus {
+    outline: 2px solid #b7a18e;
+    outline-offset: 1px;
+    border-color: #b7a18e;
+}
