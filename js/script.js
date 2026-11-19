@@ -47,11 +47,12 @@
  const calendario=panel.querySelector(".calendario-personalizado");
  const tituloCalendario=calendario.querySelector(".calendario-titulo");
  const rejillaDias=calendario.querySelector(".calendario-dias");
+ const confirmarFecha=calendario.querySelector(".calendario-confirmar");
  const hoy=new Date();hoy.setHours(0,0,0,0);
  let mesVisible=new Date(hoy.getFullYear(),hoy.getMonth(),1), fechaElegida="";
  const nombresMeses=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
  const fechaISO=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
- const formatoFecha=d=>new Intl.DateTimeFormat("es-CO",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(d);
+ const formatoFecha=d=>{const partes=new Intl.DateTimeFormat("es-CO",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).formatToParts(d);const parte=tipo=>partes.find(p=>p.type===tipo)?.value||"";const inicial=texto=>texto.charAt(0).toLocaleUpperCase("es-CO")+texto.slice(1);return inicial(parte("weekday"))+", "+parte("day")+" de "+inicial(parte("month"))+" de "+parte("year");};
  function dibujarCalendario(){
   tituloCalendario.textContent=nombresMeses[mesVisible.getMonth()]+" "+mesVisible.getFullYear();
   rejillaDias.replaceChildren();
@@ -68,13 +69,13 @@
    if(iso===fechaISO(hoy))botonDia.classList.add("dia-hoy");
    botonDia.setAttribute("aria-label",formatoFecha(fechaDia));
    botonDia.addEventListener("click",()=>{
-    fechaElegida=iso;fecha.value=formatoFecha(fechaDia);fecha.setCustomValidity("");
-    calendario.hidden=true;fecha.setAttribute("aria-expanded","false");dibujarCalendario();
+    fechaElegida=iso;confirmarFecha.disabled=false;dibujarCalendario();
    });
    rejillaDias.append(botonDia);
   }
  }
- function abrirCalendario(){calendario.hidden=false;fecha.setAttribute("aria-expanded","true");dibujarCalendario();}
+ function abrirCalendario(){calendario.hidden=false;confirmarFecha.disabled=!fechaElegida;fecha.setAttribute("aria-expanded","true");dibujarCalendario();}
+ confirmarFecha.addEventListener("click",()=>{if(!fechaElegida)return;const [anio,mes,dia]=fechaElegida.split("-").map(Number);const seleccion=new Date(anio,mes-1,dia);fecha.value=formatoFecha(seleccion);fecha.setCustomValidity("");calendario.hidden=true;fecha.setAttribute("aria-expanded","false");});
  fecha.addEventListener("click",()=>calendario.hidden?abrirCalendario():(calendario.hidden=true,fecha.setAttribute("aria-expanded","false")));
  fecha.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abrirCalendario();}if(e.key==="Escape"){calendario.hidden=true;fecha.setAttribute("aria-expanded","false");}});
  calendario.querySelector(".calendario-mes-anterior").addEventListener("click",()=>{const anterior=new Date(mesVisible.getFullYear(),mesVisible.getMonth()-1,1);if(anterior>=new Date(hoy.getFullYear(),hoy.getMonth(),1)){mesVisible=anterior;dibujarCalendario();}});
