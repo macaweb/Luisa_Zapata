@@ -3459,6 +3459,11 @@ a[href="#inicio"].boton-volver-inicio {
 }
 
 
+/* Ocultar la navegación principal mientras se agenda una cita */
+body.seleccion-abierta .encabezado {
+  display: none !important;
+}
+
 /* Mantener fija la página principal mientras se completa la selección de cita */
 body.seleccion-abierta {
   position: fixed !important;
