@@ -107,12 +107,12 @@
   const lineas=carrito.map((x,i)=>(i+1)+". "+x.nombre+" — "+(x.precio===null?"valor por consultar":cop(x.precio)));
   const total=carrito.reduce((s,x)=>s+(x.precio||0),0),pendiente=carrito.some(x=>x.precio===null);
   const fechaMensaje=String(datos.get("fecha")||"").replace(/^./,letra=>letra.toLocaleUpperCase("es-CO"));
-  let msg="Hola, Luisa. Quisiera solicitar una cita.\\n\\n*Datos de contacto*\\nNombre: "+datos.get("nombre")+"\\nCelular: "+datos.get("telefono")+"\\n\\n*Servicios seleccionados*\\n"+lineas.join("\\n")+"\\n\\n*Total:* "+cop(total);
-  if(pendiente)msg+="\\nUn servicio tiene el valor pendiente por confirmar.";
-  msg+="\\n\\n*Preferencias de cita*\\n*Fecha:* "+fechaMensaje+"\\nHorario: "+datos.get("hora")+"\\nModalidad: "+datos.get("modalidad");
-  if(datos.get("modalidad")==="A domicilio")msg+="\\n\\n*Datos para el servicio a domicilio*\\nDirección: "+datos.get("direccion")+"\\nBarrio: "+datos.get("barrio");
-  if(datos.get("observaciones"))msg+="\\n\\n*Observaciones:* "+datos.get("observaciones");
-  msg+="\\n\\nQuedo pendiente de tu confirmación. ¡Muchas gracias!";
+  let msg="Hola, Luisa. Quisiera solicitar una cita.\n\n*Datos de contacto*\nNombre: "+datos.get("nombre")+"\nCelular: "+datos.get("telefono")+"\n\n*Servicios seleccionados*\n"+lineas.join("\n")+"\n\n*Total:* "+cop(total);
+  if(pendiente)msg+="\nUn servicio tiene el valor pendiente por confirmar.";
+  msg+="\n\n*Preferencias de cita*\n*Fecha:* "+fechaMensaje+"\nHorario: "+datos.get("hora")+"\nModalidad: "+datos.get("modalidad");
+  if(datos.get("modalidad")==="A domicilio")msg+="\n\n*Datos para el servicio a domicilio*\nDirección: "+datos.get("direccion")+"\nBarrio: "+datos.get("barrio");
+  if(datos.get("observaciones"))msg+="\n\n*Observaciones:* "+datos.get("observaciones");
+  msg+="\n\nQuedo pendiente de tu confirmación. ¡Muchas gracias!";
   window.open("https://wa.me/"+numeroWhatsApp+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");
  });
 
