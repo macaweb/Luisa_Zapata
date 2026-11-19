@@ -2787,3 +2787,40 @@ a[href="#inicio"].boton-volver-inicio {
     outline-offset: 1px;
     border-color: #b7a18e;
 }
+
+
+/* Ajustes finales de la portada y llamada a la acción */
+.acciones-portada {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 22px;
+}
+.boton-agendar {
+    gap: 0;
+    min-width: 190px;
+}
+.flecha-agendar { display: none; }
+.nota-agendar {
+    display: block;
+    max-width: 290px;
+    margin: 0;
+    color: #75695f;
+    font-size: 11px;
+    line-height: 1.55;
+    text-align: left;
+}
+@media (max-width: 600px) {
+    .imagen-portada { padding-top: 82px; }
+    .acciones-portada {
+        align-items: center;
+        gap: 9px;
+        margin-top: 20px;
+    }
+    .nota-agendar {
+        max-width: 260px;
+        text-align: center;
+    }
+}
