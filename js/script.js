@@ -124,8 +124,8 @@
    "",
    "*Preferencias de cita*",
    "*Fecha:* "+fechaMensaje,
-   "Horario: "+datos.get("hora"),
-   "Modalidad: "+datos.get("modalidad")
+   "*Horario:* "+datos.get("hora"),
+   "*Modalidad:* "+datos.get("modalidad")
   );
   if(datos.get("modalidad")==="A domicilio")partesMensaje.push(
    "",
