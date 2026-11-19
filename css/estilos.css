@@ -3464,6 +3464,41 @@ body.seleccion-abierta .encabezado {
   display: none !important;
 }
 
+/* En móviles, la agenda ocupa toda la pantalla y oculta por completo la página de fondo */
+@media (max-width: 600px) {
+  .carrito-panel {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: stretch !important;
+    background: #fbf9f6 !important;
+    z-index: 9999 !important;
+  }
+  .carrito-panel[hidden] {
+    display: none !important;
+  }
+  .carrito-ventana {
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: none !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: calc(20px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
 /* Mantener fija la página principal mientras se completa la selección de cita */
 body.seleccion-abierta {
   position: fixed !important;
