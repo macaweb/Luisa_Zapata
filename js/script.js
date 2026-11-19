@@ -19,8 +19,8 @@
  const contenido=panel.querySelector(".carrito-contenido");
  // Microanimación táctil para que los botones respondan también en móvil.
  document.addEventListener("pointerdown",e=>{
-  const b=e.target.closest(".boton-anadir-servicio,.carrito-enviar");
-  if(!b)return;
+  const b=e.target.closest(".boton-anadir-servicio,.carrito-enviar,.calendario-confirmar,.boton-agendar");
+  if(!b || b.disabled)return;
   b.classList.remove("animar-toque");
   void b.offsetWidth;
   b.classList.add("animar-toque");
@@ -107,12 +107,35 @@
   const lineas=carrito.map((x,i)=>(i+1)+". "+x.nombre+" — "+(x.precio===null?"valor por consultar":cop(x.precio)));
   const total=carrito.reduce((s,x)=>s+(x.precio||0),0),pendiente=carrito.some(x=>x.precio===null);
   const fechaMensaje=String(datos.get("fecha")||"").replace(/^./,letra=>letra.toLocaleUpperCase("es-CO"));
-  let msg="Hola, Luisa. Quisiera solicitar una cita.\n\n*Datos de contacto*\nNombre: "+datos.get("nombre")+"\nCelular: "+datos.get("telefono")+"\n\n*Servicios seleccionados*\n"+lineas.join("\n")+"\n\n*Total:* "+cop(total);
-  if(pendiente)msg+="\nUn servicio tiene el valor pendiente por confirmar.";
-  msg+="\n\n*Preferencias de cita*\n*Fecha:* "+fechaMensaje+"\nHorario: "+datos.get("hora")+"\nModalidad: "+datos.get("modalidad");
-  if(datos.get("modalidad")==="A domicilio")msg+="\n\n*Datos para el servicio a domicilio*\nDirección: "+datos.get("direccion")+"\nBarrio: "+datos.get("barrio");
-  if(datos.get("observaciones"))msg+="\n\n*Observaciones:* "+datos.get("observaciones");
-  msg+="\n\nQuedo pendiente de tu confirmación. ¡Muchas gracias!";
+  const partesMensaje=[
+   "Hola, Luisa. Quisiera solicitar una cita.",
+   "",
+   "*Datos de contacto*",
+   "Nombre: "+datos.get("nombre"),
+   "Celular: "+datos.get("telefono"),
+   "",
+   "*Servicios seleccionados*",
+   ...lineas,
+   "",
+   "*Total:* "+cop(total)
+  ];
+  if(pendiente)partesMensaje.push("Un servicio tiene el valor pendiente por confirmar.");
+  partesMensaje.push(
+   "",
+   "*Preferencias de cita*",
+   "*Fecha:* "+fechaMensaje,
+   "Horario: "+datos.get("hora"),
+   "Modalidad: "+datos.get("modalidad")
+  );
+  if(datos.get("modalidad")==="A domicilio")partesMensaje.push(
+   "",
+   "*Datos para el servicio a domicilio*",
+   "Dirección: "+datos.get("direccion"),
+   "Barrio: "+datos.get("barrio")
+  );
+  if(datos.get("observaciones"))partesMensaje.push("","*Observaciones:* "+datos.get("observaciones"));
+  partesMensaje.push("","Quedo pendiente de tu confirmación. ¡Muchas gracias!");
+  const msg=partesMensaje.join("\n");
   window.open("https://wa.me/"+numeroWhatsApp+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");
  });
 
