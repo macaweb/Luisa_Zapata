@@ -3227,3 +3227,39 @@ a[href="#inicio"].boton-volver-inicio {
 .calendario-confirmar:disabled { opacity: .42; cursor: not-allowed; }
 .calendario-confirmar:focus-visible { outline: 2px solid #b99f89; outline-offset: 3px; }
 .calendario-confirmar .icono-confirmacion { font-size: 15px; line-height: 1; }
+
+
+/* Selector de franja horaria en botones discretos */
+.campo-horario { display: flex; flex-direction: column; gap: 9px; }
+.campo-horario .etiqueta-horario {
+    color: #514238;
+    font-family: 'Jost', 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+.opciones-horario { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.opcion-horario { position: relative; display: block; margin: 0; cursor: pointer; }
+.opcion-horario input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.opcion-horario span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    padding: 10px 14px;
+    border: 1px solid #e2d7cd;
+    border-radius: 9px;
+    background: #fffdfa;
+    color: #705d4e;
+    font-family: 'Jost', 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.opcion-horario input:checked + span {
+    background: #705541;
+    border-color: #705541;
+    color: #fffdfa;
+    box-shadow: 0 3px 9px rgba(89,72,60,.16);
+}
+.opcion-horario input:focus-visible + span { outline: 2px solid #b99f89; outline-offset: 3px; }
+.opcion-horario:hover span { border-color: #b99f89; }
