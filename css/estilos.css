@@ -3291,3 +3291,169 @@ a[href="#inicio"].boton-volver-inicio {
 .boton-anadir-servicio:not(.anadido):hover{animation-play-state:paused;transform:translateY(-3px) scale(1.045);}
 .boton-anadir-servicio.animar-toque{animation:toqueAnadido .38s ease!important;}
 @media(prefers-reduced-motion:reduce){.boton-anadir-servicio:not(.anadido){animation:none!important;}}
+
+
+/* Paleta renovada del agendamiento: blanco, negro y grises; camel solo como acento mínimo */
+.carrito-ventana,
+.carrito-ventana .carrito-cabecera h2,
+.formulario-cita label,
+.formulario-cita .selector-modalidad legend,
+.formulario-cita .campo-horario .etiqueta-horario {
+  color: #171717 !important;
+}
+.carrito-ventana {
+  background: #fff !important;
+  border-color: #e5e5e5 !important;
+}
+.formulario-cita input:not([type="radio"]),
+.formulario-cita textarea,
+.formulario-cita .campo-fecha input[name="fecha"] {
+  background: #fff !important;
+  color: #171717 !important;
+  border: 1px solid #d8d8d8 !important;
+  box-shadow: none !important;
+}
+.formulario-cita input::placeholder,
+.formulario-cita textarea::placeholder,
+.formulario-cita .campo-fecha input[name="fecha"]::placeholder {
+  color: #929292 !important;
+  -webkit-text-fill-color: #929292 !important;
+}
+.formulario-cita input:focus,
+.formulario-cita textarea:focus {
+  border-color: #777 !important;
+  outline: 1px solid #777 !important;
+}
+.calendario-personalizado {
+  background: #fff !important;
+  color: #171717 !important;
+  border-color: #dedede !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08) !important;
+}
+.calendario-cabecera strong,
+.calendario-dias-semana span,
+.calendario-pie {
+  color: #777 !important;
+}
+.calendario-cabecera button {
+  background: #f5f5f5 !important;
+  color: #171717 !important;
+  border-color: #dedede !important;
+}
+.calendario-cabecera button:hover {
+  background: #eaeaea !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario {
+  background: #fff !important;
+  color: #222 !important;
+  border-color: #ededed !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario:not(:disabled):hover {
+  background: #f0f0f0 !important;
+  color: #111 !important;
+  border-color: #aaa !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario.dia-seleccionado,
+.formulario-cita .calendario-personalizado .dia-calendario.dia-seleccionado:hover,
+.formulario-cita .calendario-personalizado .dia-calendario.dia-seleccionado:focus {
+  background: #171717 !important;
+  background-color: #171717 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: #171717 !important;
+  box-shadow: 0 3px 9px rgba(0,0,0,.18) !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario:disabled {
+  background: #fafafa !important;
+  color: #c8c8c8 !important;
+  border-color: transparent !important;
+}
+.calendario-confirmar,
+.calendario-confirmar:disabled,
+.calendario-confirmar:not(:disabled):hover {
+  background: #171717 !important;
+  border: 1px solid #171717 !important;
+  color: #fff !important;
+}
+.calendario-confirmar:not(:disabled):hover {
+  background: #333 !important;
+  border-color: #333 !important;
+}
+.calendario-confirmar:focus-visible {
+  outline: 2px solid #777 !important;
+}
+.opcion-horario span {
+  background: #fff !important;
+  color: #333 !important;
+  border-color: #dedede !important;
+}
+.opcion-horario input:checked + span {
+  background: #171717 !important;
+  border-color: #171717 !important;
+  color: #fff !important;
+  box-shadow: 0 3px 9px rgba(0,0,0,.12) !important;
+}
+.opcion-horario:hover span {
+  border-color: #888 !important;
+}
+.modalidad-contenido {
+  background: #fff !important;
+  color: #171717 !important;
+  border-color: #dedede !important;
+}
+.opcion-modalidad>input:checked+.modalidad-contenido {
+  background: #f7f7f7 !important;
+  border-color: #555 !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08),0 7px 17px rgba(0,0,0,.06) !important;
+}
+.opcion-modalidad>input:focus-visible+.modalidad-contenido {
+  outline-color: #777 !important;
+}
+.modalidad-icono {
+  background: #f0f0f0 !important;
+  color: #222 !important;
+}
+.opcion-modalidad>input:checked+.modalidad-contenido .modalidad-icono {
+  background: #e6e6e6 !important;
+}
+.modalidad-texto strong { color: #171717 !important; }
+.modalidad-texto small { color: #777 !important; }
+.modalidad-check {
+  border-color: #bbb !important;
+}
+.opcion-modalidad>input:checked+.modalidad-contenido .modalidad-check {
+  background: #171717 !important;
+  border-color: #171717 !important;
+  color: #fff !important;
+}
+.carrito-enviar,
+.carrito-enviar:hover,
+.carrito-enviar:active,
+.carrito-enviar.animar-toque {
+  background: #171717 !important;
+  border: 1px solid #171717 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12) !important;
+}
+.carrito-enviar:hover {
+  background: #333 !important;
+  border-color: #333 !important;
+}
+.carrito-quitar {
+  background: #fff !important;
+  border-color: #dedede !important;
+  color: #333 !important;
+}
+.carrito-quitar .icono-eliminar {
+  background: #f0f0f0 !important;
+  color: #222 !important;
+}
+.carrito-quitar:hover {
+  background: #171717 !important;
+  border-color: #171717 !important;
+  color: #fff !important;
+}
+.carrito-quitar:hover .icono-eliminar {
+  background: rgba(255,255,255,.16) !important;
+  color: #fff !important;
+}
