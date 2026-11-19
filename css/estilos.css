@@ -3263,3 +3263,23 @@ a[href="#inicio"].boton-volver-inicio {
 }
 .opcion-horario input:focus-visible + span { outline: 2px solid #b99f89; outline-offset: 3px; }
 .opcion-horario:hover span { border-color: #b99f89; }
+
+
+/* Selector visual de modalidad de cita: estudio o domicilio */
+.selector-modalidad{border:0;padding:0;margin:0 0 16px;min-width:0;}
+.selector-modalidad legend{display:block;margin:0 0 9px;padding:0;color:#514238;font:500 14px "Jost",sans-serif;}
+.opciones-modalidad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.opcion-modalidad{display:block;position:relative;cursor:pointer;min-width:0;}
+.opcion-modalidad>input{position:absolute;opacity:0;pointer-events:none;}
+.modalidad-contenido{display:flex;align-items:center;gap:10px;min-height:76px;padding:12px;border:1px solid #e5d9ce;border-radius:13px;background:linear-gradient(145deg,#fffdfa,#f8f3ed);color:#59483c;box-sizing:border-box;transition:border-color .22s ease,background .22s ease,box-shadow .22s ease,transform .22s ease;}
+.opcion-modalidad:hover .modalidad-contenido{transform:translateY(-2px);box-shadow:0 7px 16px rgba(86,65,49,.09);}
+.opcion-modalidad>input:checked+.modalidad-contenido{border-color:#aa8d76;background:linear-gradient(145deg,#f8eee5,#fffaf5);box-shadow:0 0 0 2px rgba(170,141,118,.13),0 7px 17px rgba(86,65,49,.08);}
+.opcion-modalidad>input:focus-visible+.modalidad-contenido{outline:2px solid #aa8d76;outline-offset:3px;}
+.modalidad-icono{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border-radius:11px;background:#eee2d7;color:#856b57;font:24px Georgia,serif;transition:transform .22s ease,background .22s ease;}
+.opcion-modalidad>input:checked+.modalidad-contenido .modalidad-icono{transform:scale(1.08);background:#e6d3c2;}
+.modalidad-texto{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px;}
+.modalidad-texto strong{font:600 13px "Jost",sans-serif;color:#514238;}
+.modalidad-texto small{font:400 11px "Jost",sans-serif;line-height:1.35;color:#88786b;}
+.modalidad-check{display:grid;place-items:center;flex:0 0 19px;width:19px;height:19px;border:1px solid #d8c9bd;border-radius:50%;color:transparent;font-size:11px;transition:all .2s ease;}
+.opcion-modalidad>input:checked+.modalidad-contenido .modalidad-check{border-color:#987c68;background:#987c68;color:#fff;transform:scale(1.05);}
+@media(max-width:390px){.opciones-modalidad{grid-template-columns:1fr;}.modalidad-contenido{min-height:68px;}}
