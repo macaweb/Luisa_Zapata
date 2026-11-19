@@ -39,10 +39,25 @@
  function crearBoton(destino,nombre,precio,id){const b=document.createElement("button");b.type="button";b.className="boton-anadir-servicio";b.dataset.itemId=id;b.textContent="Añadir";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{const i=carrito.findIndex(x=>x.id===id);if(i>=0)carrito.splice(i,1);else carrito.push({id,nombre,precio});actualizar();render();mostrarAviso(i>=0?"Se quitó de tu selección":"¡Añadido a tu selección!");});destino.append(b);}
  document.querySelectorAll("#pestanas .tarjeta-servicio,#facial .tarjeta-servicio").forEach((card,i)=>{const nombre=card.querySelector("h3")?.textContent.trim(),strong=card.querySelector(".precio-servicio strong"),destino=card.querySelector(".precio-servicio");if(nombre&&strong&&destino){const digits=strong.textContent.replace(/[^0-9]/g,"");crearBoton(destino,nombre,digits?Number(digits):null,"servicio-"+i);}});
  const curso=document.querySelector("#cursos .curso-datos");if(curso)crearBoton(curso,"Formación profesional personalizada en extensiones de pestañas",1400000,"curso-extensiones-profesional");
- boton.addEventListener("click",()=>{panel.hidden=false;render();});
- panel.querySelector(".carrito-cerrar").addEventListener("click",()=>panel.hidden=true);
- panel.addEventListener("click",e=>{if(e.target===panel)panel.hidden=true;});
- document.addEventListener("keydown",e=>{if(e.key==="Escape")panel.hidden=true;});
+ let posicionScrollGuardada=0;
+ function abrirPanelSeleccion(){
+  posicionScrollGuardada=window.scrollY||window.pageYOffset;
+  document.body.classList.add("seleccion-abierta");
+  document.body.style.top="-"+posicionScrollGuardada+"px";
+  panel.hidden=false;
+  render();
+ }
+ function cerrarPanelSeleccion(){
+  if(panel.hidden)return;
+  panel.hidden=true;
+  document.body.classList.remove("seleccion-abierta");
+  document.body.style.top="";
+  window.scrollTo(0,posicionScrollGuardada);
+ }
+ boton.addEventListener("click",abrirPanelSeleccion);
+ panel.querySelector(".carrito-cerrar").addEventListener("click",cerrarPanelSeleccion);
+ panel.addEventListener("click",e=>{if(e.target===panel)cerrarPanelSeleccion();});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)cerrarPanelSeleccion();});
  const formulario=panel.querySelector(".formulario-cita"), fecha=formulario.elements.fecha;
  const calendario=panel.querySelector(".calendario-personalizado");
  const tituloCalendario=calendario.querySelector(".calendario-titulo");
