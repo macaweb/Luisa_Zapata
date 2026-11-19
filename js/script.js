@@ -87,12 +87,13 @@
   const datos=new FormData(formulario);
   const lineas=carrito.map((x,i)=>(i+1)+". "+x.nombre+" — "+(x.precio===null?"valor por consultar":cop(x.precio)));
   const total=carrito.reduce((s,x)=>s+(x.precio||0),0),pendiente=carrito.some(x=>x.precio===null);
-  let msg="Hola, Luisa. Quisiera solicitar una cita.\n\nDATOS DE CONTACTO\nNombre: "+datos.get("nombre")+"\nCelular: "+datos.get("telefono")+"\n\nSERVICIOS\n"+lineas.join("\n")+"\n\nTotal de servicios con precio: "+cop(total);
-  if(pendiente)msg+="\nHay un servicio cuyo valor deseo consultar.";
-  msg+="\n\nPREFERENCIAS DE CITA\nFecha: "+datos.get("fecha")+"\nHorario: "+datos.get("hora")+"\nModalidad: "+datos.get("modalidad");
-  if(datos.get("modalidad")==="A domicilio")msg+="\nDirección: "+datos.get("direccion");
-  if(datos.get("observaciones"))msg+="\nObservaciones: "+datos.get("observaciones");
-  msg+="\n\nQuedo pendiente de la confirmación. ¡Gracias!";
+  const fechaMensaje=String(datos.get("fecha")||"").replace(/^./,letra=>letra.toLocaleUpperCase("es-CO"));
+  let msg="Hola, Luisa. Quisiera solicitar una cita.\\n\\n*Datos de contacto*\\nNombre: "+datos.get("nombre")+"\\nCelular: "+datos.get("telefono")+"\\n\\n*Servicios seleccionados*\\n"+lineas.join("\\n")+"\\n\\n*Total:* "+cop(total);
+  if(pendiente)msg+="\\nUn servicio tiene el valor pendiente por confirmar.";
+  msg+="\\n\\n*Preferencias de cita*\\n*Fecha:* "+fechaMensaje+"\\nHorario: "+datos.get("hora")+"\\nModalidad: "+datos.get("modalidad");
+  if(datos.get("modalidad")==="A domicilio")msg+="\\nDirección: "+datos.get("direccion");
+  if(datos.get("observaciones"))msg+="\\n\\n*Observaciones:* "+datos.get("observaciones");
+  msg+="\\n\\nQuedo pendiente de tu confirmación. ¡Muchas gracias!";
   window.open("https://wa.me/"+numeroWhatsApp+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");
  });
 
