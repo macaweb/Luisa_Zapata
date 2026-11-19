@@ -3457,3 +3457,22 @@ a[href="#inicio"].boton-volver-inicio {
   background: rgba(255,255,255,.16) !important;
   color: #fff !important;
 }
+
+
+/* Mantener fija la página principal mientras se completa la selección de cita */
+body.seleccion-abierta {
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+.carrito-panel {
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+.carrito-ventana {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
