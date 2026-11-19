@@ -84,7 +84,7 @@
  const modalidad=formulario.elements.modalidad,campoDireccion=formulario.querySelector(".campo-direccion");
  modalidad.addEventListener("change",()=>{const domicilio=modalidad.value==="A domicilio";campoDireccion.hidden=!domicilio;formulario.elements.direccion.required=domicilio;});
  formulario.addEventListener("submit",evento=>{
-  evento.preventDefault();if(!carrito.length){alert("Añade al menos un servicio antes de solicitar tu cita.");return;}if(!formulario.reportValidity())return;
+  evento.preventDefault();if(!carrito.length){alert("Añade al menos un servicio antes de solicitar tu cita.");return;}if(!formulario.checkValidity()){alert("Para realizar la solicitud, debes completar todos los campos obligatorios.");formulario.reportValidity();return;}
   const datos=new FormData(formulario);
   const lineas=carrito.map((x,i)=>(i+1)+". "+x.nombre+" — "+(x.precio===null?"valor por consultar":cop(x.precio)));
   const total=carrito.reduce((s,x)=>s+(x.precio||0),0),pendiente=carrito.some(x=>x.precio===null);
