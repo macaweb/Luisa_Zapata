@@ -73,7 +73,7 @@
  ventanaAgenda.append(vistaCategorias,vistaDetalle,confirmacion);
  function crearTarjetaCategoria(id,titulo,descripcion,foto){
   const b=document.createElement("button");b.type="button";b.className="agenda-categoria";b.dataset.categoria=id;
-  if(foto){const imagen=foto.cloneNode(true);imagen.classList.add("agenda-categoria-imagen");b.append(imagen);}
+  if(foto){const imagen=foto.cloneNode(true);imagen.classList.add("agenda-categoria-imagen");if(imagen.tagName==="IMG"){imagen.removeAttribute("style");imagen.loading="lazy";}b.append(imagen);}
   const textos=document.createElement("span");textos.className="agenda-categoria-textos";
   const nombre=document.createElement("strong");nombre.textContent=titulo;
   const detalle=document.createElement("small");detalle.textContent=descripcion;
