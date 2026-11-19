@@ -14,7 +14,7 @@
   boton.innerHTML='<svg class="icono-seleccion" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 19.5c3.1-6.2 7.1-9.3 12-9.3s8.9 3.1 12 9.3"/><path d="M7.5 15.2 5.8 11M12 11.5 11.2 6.8M17 10.3 17.2 5.5M22 11.5 23.4 7M26 15.2 28.3 11"/><path d="M8 21.5c2.5 2.2 5.2 3.3 8 3.3s5.5-1.1 8-3.3"/></svg><span>Mi selección</span><span class="carrito-contador">0</span>';
  document.body.append(boton);
  const panel=document.createElement("div");panel.className="carrito-panel";panel.hidden=true;
- panel.innerHTML='<section class="carrito-ventana" role="dialog" aria-modal="true" aria-labelledby="titulo-carrito"><div class="carrito-cabecera"><h2 id="titulo-carrito">Agendar tu cita</h2><button type="button" class="carrito-cerrar" aria-label="Cerrar selección">×</button></div><div class="carrito-contenido"></div><div class="carrito-total"><span>Total de servicios con precio</span><strong>$0</strong></div><form class="formulario-cita"><label>Nombre completo<input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required maxlength="90"></label><label>Número de celular<input name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="Tu número de contacto" required maxlength="20"></label><label>Fecha preferida<input name="fecha" type="date" required></label><label>Franja horaria preferida<select name="hora" required><option value="">Selecciona una franja</option><option>En la mañana</option><option>En la tarde</option><option>Horario flexible</option></select></label><label>¿Dónde deseas tu servicio?<select name="modalidad" required><option value="">Selecciona una opción</option><option>En el estudio</option><option>A domicilio</option></select></label><label class="campo-direccion" hidden>Dirección para el servicio a domicilio<input name="direccion" type="text" autocomplete="street-address" placeholder="Dirección y barrio"></label><label>Observaciones (opcional)<textarea name="observaciones" rows="2" maxlength="300" placeholder="Cuéntanos si tienes alguna preferencia"></textarea></label><button type="submit" class="carrito-enviar">Enviar solicitud por WhatsApp</button></form><p class="carrito-ayuda">Tu solicitud se enviará a Luisa para confirmar disponibilidad y detalles de la cita.</p></section>';
+ panel.innerHTML='<section class="carrito-ventana" role="dialog" aria-modal="true" aria-labelledby="titulo-carrito"><div class="carrito-cabecera"><h2 id="titulo-carrito">Agendar tu cita</h2><button type="button" class="carrito-cerrar" aria-label="Cerrar selección">×</button></div><div class="carrito-contenido"></div><div class="carrito-total"><span>Total de servicios con precio</span><strong>$0</strong></div><form class="formulario-cita"><label>Nombre completo<input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required maxlength="90"></label><label>Número de celular<input name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="Tu número de contacto" required maxlength="20"></label><label class="campo-fecha">Fecha preferida<input name="fecha" type="text" placeholder="Selecciona una fecha" autocomplete="off" readonly required aria-haspopup="dialog" aria-expanded="false"><div class="calendario-personalizado" hidden><div class="calendario-cabecera"><button type="button" class="calendario-mes-anterior" aria-label="Mes anterior">‹</button><strong class="calendario-titulo"></strong><button type="button" class="calendario-mes-siguiente" aria-label="Mes siguiente">›</button></div><div class="calendario-dias-semana"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div><div class="calendario-dias"></div><p class="calendario-pie">Selecciona el día que prefieras para tu cita</p></div></label><label>Franja horaria preferida<select name="hora" required><option value="">Selecciona una franja</option><option>En la mañana</option><option>En la tarde</option><option>Horario flexible</option></select></label><label>¿Dónde deseas tu servicio?<select name="modalidad" required><option value="">Selecciona una opción</option><option>En el estudio</option><option>A domicilio</option></select></label><label class="campo-direccion" hidden>Dirección para el servicio a domicilio<input name="direccion" type="text" autocomplete="street-address" placeholder="Dirección y barrio"></label><label>Observaciones (opcional)<textarea name="observaciones" rows="2" maxlength="300" placeholder="Cuéntanos si tienes alguna preferencia"></textarea></label><button type="submit" class="carrito-enviar">Enviar solicitud por WhatsApp</button></form><p class="carrito-ayuda">Tu solicitud se enviará a Luisa para confirmar disponibilidad y detalles de la cita.</p></section>';
  document.body.appendChild(panel);
  const contenido=panel.querySelector(".carrito-contenido");
  function render(){
@@ -34,7 +34,42 @@
  panel.addEventListener("click",e=>{if(e.target===panel)panel.hidden=true;});
  document.addEventListener("keydown",e=>{if(e.key==="Escape")panel.hidden=true;});
  const formulario=panel.querySelector(".formulario-cita"), fecha=formulario.elements.fecha;
- const hoy=new Date();fecha.min=new Date(hoy.getTime()-hoy.getTimezoneOffset()*60000).toISOString().slice(0,10);
+ const calendario=panel.querySelector(".calendario-personalizado");
+ const tituloCalendario=calendario.querySelector(".calendario-titulo");
+ const rejillaDias=calendario.querySelector(".calendario-dias");
+ const hoy=new Date();hoy.setHours(0,0,0,0);
+ let mesVisible=new Date(hoy.getFullYear(),hoy.getMonth(),1), fechaElegida="";
+ const nombresMeses=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+ const fechaISO=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+ const formatoFecha=d=>new Intl.DateTimeFormat("es-CO",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(d);
+ function dibujarCalendario(){
+  tituloCalendario.textContent=nombresMeses[mesVisible.getMonth()]+" "+mesVisible.getFullYear();
+  rejillaDias.replaceChildren();
+  const primero=new Date(mesVisible.getFullYear(),mesVisible.getMonth(),1);
+  const desplazamiento=(primero.getDay()+6)%7;
+  const total=new Date(mesVisible.getFullYear(),mesVisible.getMonth()+1,0).getDate();
+  for(let i=0;i<desplazamiento;i++){const vacio=document.createElement("span");vacio.className="dia-vacio";rejillaDias.append(vacio);}
+  for(let dia=1;dia<=total;dia++){
+   const fechaDia=new Date(mesVisible.getFullYear(),mesVisible.getMonth(),dia);fechaDia.setHours(0,0,0,0);
+   const iso=fechaISO(fechaDia), botonDia=document.createElement("button");
+   botonDia.type="button";botonDia.className="dia-calendario";botonDia.textContent=dia;
+   botonDia.disabled=fechaDia<hoy;
+   if(iso===fechaElegida)botonDia.classList.add("dia-seleccionado");
+   if(iso===fechaISO(hoy))botonDia.classList.add("dia-hoy");
+   botonDia.setAttribute("aria-label",formatoFecha(fechaDia));
+   botonDia.addEventListener("click",()=>{
+    fechaElegida=iso;fecha.value=formatoFecha(fechaDia);fecha.setCustomValidity("");
+    calendario.hidden=true;fecha.setAttribute("aria-expanded","false");dibujarCalendario();
+   });
+   rejillaDias.append(botonDia);
+  }
+ }
+ function abrirCalendario(){calendario.hidden=false;fecha.setAttribute("aria-expanded","true");dibujarCalendario();}
+ fecha.addEventListener("click",()=>calendario.hidden?abrirCalendario():(calendario.hidden=true,fecha.setAttribute("aria-expanded","false")));
+ fecha.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abrirCalendario();}if(e.key==="Escape"){calendario.hidden=true;fecha.setAttribute("aria-expanded","false");}});
+ calendario.querySelector(".calendario-mes-anterior").addEventListener("click",()=>{const anterior=new Date(mesVisible.getFullYear(),mesVisible.getMonth()-1,1);if(anterior>=new Date(hoy.getFullYear(),hoy.getMonth(),1)){mesVisible=anterior;dibujarCalendario();}});
+ calendario.querySelector(".calendario-mes-siguiente").addEventListener("click",()=>{mesVisible=new Date(mesVisible.getFullYear(),mesVisible.getMonth()+1,1);dibujarCalendario();});
+
  const modalidad=formulario.elements.modalidad,campoDireccion=formulario.querySelector(".campo-direccion");
  modalidad.addEventListener("change",()=>{const domicilio=modalidad.value==="A domicilio";campoDireccion.hidden=!domicilio;formulario.elements.direccion.required=domicilio;});
  formulario.addEventListener("submit",evento=>{
