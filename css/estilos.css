@@ -2910,3 +2910,112 @@ a[href="#inicio"].boton-volver-inicio {
     stroke-linecap: round !important;
     stroke-linejoin: round !important;
 }
+
+
+/* Calendario personalizado con la identidad marfil, beige y café */
+.formulario-cita .campo-fecha { position: relative; }
+.formulario-cita input[name="fecha"] {
+    cursor: pointer;
+    background: #fbf8f4;
+    border-color: #d8c9bd;
+    color: #59483c;
+    font-family: 'Jost', sans-serif;
+}
+.formulario-cita input[name="fecha"]::placeholder { color: #9b8a7c; opacity: 1; }
+.calendario-personalizado {
+    position: relative;
+    z-index: 8;
+    width: 100%;
+    margin-top: 9px;
+    padding: 15px;
+    border: 1px solid #e2d7cd;
+    border-radius: 13px;
+    background: #fffdfa;
+    box-shadow: 0 12px 30px rgba(65,48,37,.10);
+    box-sizing: border-box;
+    color: #514238;
+}
+.calendario-personalizado[hidden] { display: none !important; }
+.calendario-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+.calendario-cabecera strong {
+    color: #6c5545;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.calendario-cabecera button {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e4d9cf;
+    border-radius: 50%;
+    background: #f7f1eb;
+    color: #806957;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+.calendario-cabecera button:hover { background: #eee3d9; transform: scale(1.06); }
+.calendario-dias-semana, .calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7,minmax(0,1fr));
+    gap: 5px;
+    text-align: center;
+}
+.calendario-dias-semana { margin-bottom: 7px; }
+.calendario-dias-semana span {
+    color: #9b8878;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+.dia-calendario, .dia-vacio {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    aspect-ratio: 1;
+}
+.dia-calendario {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    color: #514238;
+    font: 400 12px 'Jost',sans-serif;
+    cursor: pointer;
+    transition: background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.dia-calendario:not(:disabled):hover {
+    border-color: #cbb7a6;
+    background: #f5eee8;
+    transform: scale(1.08);
+}
+.dia-calendario:disabled { color: #d4ccc5; cursor: not-allowed; }
+.dia-calendario.dia-hoy:not(.dia-seleccionado) { border-color: #c6ad99; color: #806957; font-weight: 600; }
+.dia-calendario.dia-seleccionado {
+    background: #806957;
+    color: #fffaf5;
+    font-weight: 600;
+    box-shadow: 0 3px 9px rgba(89,72,60,.2);
+}
+.calendario-pie {
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid #eee6df;
+    color: #9b8878;
+    font-size: 10px;
+    text-align: center;
+}
+@media(max-width:600px) {
+    .calendario-personalizado { padding: 13px 11px; }
+    .calendario-dias-semana,.calendario-dias { gap: 3px; }
+    .dia-calendario { font-size: 12px; }
+}
