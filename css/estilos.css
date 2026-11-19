@@ -2885,3 +2885,28 @@ a[href="#inicio"].boton-volver-inicio {
         transition: none !important;
     }
 }
+
+
+/* Ajuste definitivo: eliminar el espacio superior antes de la foto de portada */
+@media (max-width: 700px) {
+    .imagen-portada {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    .portada {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        gap: 0 !important;
+    }
+}
+
+/* Icono lineal de pestañas para el acceso a la selección */
+.seleccion-flotante .icono-seleccion {
+    width: 25px !important;
+    height: 25px !important;
+    fill: none !important;
+    stroke: #987c68 !important;
+    stroke-width: 1.65 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
