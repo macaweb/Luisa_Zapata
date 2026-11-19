@@ -3117,3 +3117,58 @@ a[href="#inicio"].boton-volver-inicio {
 @media (prefers-reduced-motion: reduce) {
   .carrito-quitar, .carrito-quitar .icono-eliminar { transition: none; }
 }
+
+
+/* Corrección de contraste del calendario y de la fecha elegida */
+.formulario-cita .campo-fecha input[name="fecha"],
+.formulario-cita .campo-fecha input[name="fecha"]:focus {
+    background-color: #fffdfa !important;
+    color: #514238 !important;
+    -webkit-text-fill-color: #514238 !important;
+    opacity: 1 !important;
+    border: 1px solid #cbb9a9 !important;
+}
+.formulario-cita .campo-fecha input[name="fecha"]::placeholder {
+    color: #806957 !important;
+    -webkit-text-fill-color: #806957 !important;
+    opacity: 1 !important;
+}
+.formulario-cita .calendario-personalizado {
+    background: #fffdfa !important;
+    color: #514238 !important;
+    opacity: 1 !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario {
+    background-color: #f4eee8 !important;
+    color: #514238 !important;
+    border: 1px solid #e5d9ce !important;
+    opacity: 1 !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario:not(:disabled):hover {
+    background-color: #e8d9cb !important;
+    color: #49382d !important;
+    border-color: #b99f89 !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario.dia-seleccionado,
+.formulario-cita .calendario-personalizado .dia-calendario.dia-seleccionado:hover,
+.formulario-cita .calendario-personalizado .dia-calendario.dia-seleccionado:focus {
+    background: #705541 !important;
+    background-color: #705541 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 1px solid #705541 !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    box-shadow: 0 3px 10px rgba(75, 53, 38, .24) !important;
+}
+.formulario-cita .calendario-personalizado .dia-calendario:disabled {
+    background: #f8f5f1 !important;
+    color: #c4b9ae !important;
+    border-color: transparent !important;
+    opacity: 1 !important;
+}
+.formulario-cita .calendario-personalizado .calendario-cabecera button {
+    background: #f0e6dc !important;
+    color: #705541 !important;
+    border-color: #d9c8b8 !important;
+}
