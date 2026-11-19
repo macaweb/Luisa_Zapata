@@ -41,6 +41,7 @@
  function render(){
   boton.querySelector(".carrito-contador").textContent=carrito.length;
   boton.hidden=carrito.length===0;
+  panel.querySelectorAll(".agenda-continuar").forEach(b=>{b.hidden=carrito.length===0;b.querySelector(".agenda-cantidad").textContent=carrito.length;});
   panel.querySelector(".carrito-total strong").textContent=cop(carrito.reduce((s,x)=>s+(x.precio||0),0));
   if(!carrito.length){contenido.innerHTML='<p class="carrito-vacio">Aún no has añadido servicios. Explora los tratamientos y elige los que te interesen.</p>';return;}
   const lista=document.createElement("div");lista.className="carrito-lista";
@@ -50,13 +51,99 @@
  function crearBoton(destino,nombre,precio,id){const b=document.createElement("button");b.type="button";b.className="boton-anadir-servicio";b.dataset.itemId=id;b.textContent="Añadir";b.setAttribute("aria-pressed","false");b.addEventListener("click",()=>{const i=carrito.findIndex(x=>x.id===id);if(i>=0)carrito.splice(i,1);else carrito.push({id,nombre,precio});guardarSeleccion();actualizar();render();mostrarAviso(i>=0?"Se quitó de tu selección":"¡Añadido a tu selección!");});destino.append(b);}
  document.querySelectorAll("#pestanas .tarjeta-servicio,#facial .tarjeta-servicio").forEach((card,i)=>{const nombre=card.querySelector("h3")?.textContent.trim(),strong=card.querySelector(".precio-servicio strong"),destino=card.querySelector(".precio-servicio");if(nombre&&strong&&destino){const digits=strong.textContent.replace(/[^0-9]/g,"");crearBoton(destino,nombre,digits?Number(digits):null,"servicio-"+i);}});
  const curso=document.querySelector("#cursos .curso-datos");if(curso)crearBoton(curso,"Formación profesional personalizada en extensiones de pestañas",1400000,"curso-extensiones-profesional");
+ // Navegación interna de la agenda: categorías, servicios y confirmación.
+ const ventanaAgenda=panel.querySelector(".carrito-ventana");
+ const vistaCategorias=document.createElement("section");
+ vistaCategorias.className="agenda-vista agenda-categorias";
+ vistaCategorias.innerHTML='<div class="agenda-intro"><p class="agenda-etiqueta">LUISA ZAPATA · BEAUTY STUDIO</p><h3>Agenda tu cita</h3><p>Selecciona la categoría que deseas consultar.</p></div><div class="agenda-categorias-grid"></div><button type="button" class="agenda-continuar" hidden>Ver mi selección <span class="agenda-cantidad">0</span></button>';
+ const vistaDetalle=document.createElement("section");
+ vistaDetalle.className="agenda-vista agenda-detalle";
+ vistaDetalle.hidden=true;
+ vistaDetalle.innerHTML='<button type="button" class="agenda-volver">← Todas las categorías</button><div class="agenda-detalle-cabecera"><p class="agenda-etiqueta"></p><h3></h3><p></p></div><div class="agenda-detalle-lista"></div><button type="button" class="agenda-continuar" hidden>Ver mi selección <span class="agenda-cantidad">0</span></button>';
+ const confirmacion=document.createElement("section");
+ confirmacion.className="agenda-confirmacion";
+ const volverCategorias=document.createElement("button");
+ volverCategorias.type="button";volverCategorias.className="agenda-volver agenda-volver-confirmacion";
+ volverCategorias.textContent="← Seguir explorando servicios";
+ const contenidoExistente=panel.querySelector(".carrito-contenido");
+ const totalExistente=panel.querySelector(".carrito-total");
+ const formularioExistente=panel.querySelector(".formulario-cita");
+ confirmacion.append(volverCategorias,contenidoExistente,totalExistente,formularioExistente);
+ confirmacion.hidden=true;
+ ventanaAgenda.append(vistaCategorias,vistaDetalle,confirmacion);
+ function crearTarjetaCategoria(id,titulo,descripcion,foto){
+  const b=document.createElement("button");b.type="button";b.className="agenda-categoria";b.dataset.categoria=id;
+  if(foto){const imagen=foto.cloneNode(true);imagen.classList.add("agenda-categoria-imagen");b.append(imagen);}
+  const textos=document.createElement("span");textos.className="agenda-categoria-textos";
+  const nombre=document.createElement("strong");nombre.textContent=titulo;
+  const detalle=document.createElement("small");detalle.textContent=descripcion;
+  const enlace=document.createElement("span");enlace.className="agenda-categoria-enlace";enlace.textContent="Ver servicios →";
+  textos.append(nombre,detalle,enlace);b.append(textos);return b;
+ }
+ const categorias=[
+  {id:"pestanas",titulo:"Pestañas y cejas",descripcion:"Extensiones, lifting y diseño de cejas.",seccion:document.querySelector("#pestanas"),foto:document.querySelector("#pestanas .foto-servicio"),subtitulo:"PESTAÑAS Y CEJAS",frase:"Un efecto para cada estilo, una mirada que habla por ti."},
+  {id:"facial",titulo:"Facial",descripcion:"Limpiezas y tratamientos para tu piel.",seccion:document.querySelector("#facial"),foto:document.querySelector("#facial .foto-servicio"),subtitulo:"CUIDADO FACIAL",frase:"Tratamientos para consentir y cuidar tu piel."},
+  {id:"cursos",titulo:"Cursos",descripcion:"Formación profesional y personalizada.",seccion:document.querySelector("#cursos"),foto:document.querySelector("#cursos .imagen-curso img"),subtitulo:"FORMACIÓN PROFESIONAL",frase:"Aprende y perfecciona tus técnicas."}
+ ];
+ const rejillaCategorias=vistaCategorias.querySelector(".agenda-categorias-grid");
+ categorias.forEach(cat=>{
+  const tarjeta=crearTarjetaCategoria(cat.id,cat.titulo,cat.descripcion,cat.foto);
+  tarjeta.addEventListener("click",()=>abrirCategoria(cat.id));
+  rejillaCategorias.append(tarjeta);
+ });
+ function abrirCategoria(id){
+  const cat=categorias.find(x=>x.id===id);if(!cat)return;
+  vistaCategorias.hidden=true;confirmacion.hidden=true;vistaDetalle.hidden=false;
+  vistaDetalle.querySelector(".agenda-etiqueta").textContent=cat.subtitulo;
+  vistaDetalle.querySelector("h3").textContent=cat.titulo;
+  vistaDetalle.querySelector(".agenda-detalle-cabecera>p:last-child").textContent=cat.frase;
+  const lista=vistaDetalle.querySelector(".agenda-detalle-lista");lista.replaceChildren();
+  if(id==="cursos"){
+   const original=cat.seccion?.querySelector(".curso-contenido");
+   if(original){
+    const copia=original.cloneNode(true);
+    copia.querySelectorAll(".boton-anadir-servicio").forEach(x=>x.remove());
+    const datos=copia.querySelector(".curso-datos");
+    if(datos)crearBoton(datos,"Formación profesional personalizada en extensiones de pestañas",1400000,"curso-extensiones-profesional");
+    lista.append(copia);
+   }
+  }else{
+   cat.seccion?.querySelectorAll(".tarjeta-servicio").forEach((original,i)=>{
+    const copia=original.cloneNode(true);
+    copia.querySelectorAll(".boton-anadir-servicio").forEach(x=>x.remove());
+    const nombre=copia.querySelector("h3")?.textContent.trim();
+    const precio=copia.querySelector(".precio-servicio strong");
+    const destino=copia.querySelector(".precio-servicio");
+    if(nombre&&destino){
+     const digits=precio?.textContent.replace(/[^0-9]/g,"")||"";
+     crearBoton(destino,nombre,digits?Number(digits):null,"agenda-"+id+"-"+i);
+    }
+    lista.append(copia);
+   });
+  }
+  render();ventanaAgenda.scrollTop=0;
+ }
+ function mostrarConfirmacion(){
+  vistaCategorias.hidden=true;vistaDetalle.hidden=true;confirmacion.hidden=false;
+  render();ventanaAgenda.scrollTop=0;
+ }
+ function mostrarCategorias(){
+  vistaDetalle.hidden=true;confirmacion.hidden=true;vistaCategorias.hidden=false;
+  render();ventanaAgenda.scrollTop=0;
+ }
+ vistaDetalle.querySelector(".agenda-volver").addEventListener("click",mostrarCategorias);
+ volverCategorias.addEventListener("click",mostrarCategorias);
+ vistaCategorias.querySelector(".agenda-continuar").addEventListener("click",mostrarConfirmacion);
+ vistaDetalle.querySelector(".agenda-continuar").addEventListener("click",mostrarConfirmacion);
+
  let posicionScrollGuardada=0;
- function abrirPanelSeleccion(){
+ function abrirPanelSeleccion(vista="categorias"){
   posicionScrollGuardada=window.scrollY||window.pageYOffset;
   document.body.classList.add("seleccion-abierta");
   document.body.style.top="-"+posicionScrollGuardada+"px";
   panel.hidden=false;
   render();
+  if(vista==="seleccion")mostrarConfirmacion();else mostrarCategorias();
  }
  function cerrarPanelSeleccion(){
   if(panel.hidden)return;
@@ -65,7 +152,8 @@
   document.body.style.top="";
   window.scrollTo(0,posicionScrollGuardada);
  }
- boton.addEventListener("click",abrirPanelSeleccion);
+ boton.addEventListener("click",()=>abrirPanelSeleccion("seleccion"));
+ document.querySelectorAll(".boton-agendar").forEach(enlace=>enlace.addEventListener("click",e=>{e.preventDefault();abrirPanelSeleccion("categorias");}));
  panel.querySelector(".carrito-cerrar").addEventListener("click",cerrarPanelSeleccion);
  panel.addEventListener("click",e=>{if(e.target===panel)cerrarPanelSeleccion();});
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)cerrarPanelSeleccion();});
