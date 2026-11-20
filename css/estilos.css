@@ -3683,7 +3683,7 @@ body.seleccion-abierta {
         max-height: none;
         margin: 0;
         overflow: hidden;
-        border-radius: 48% 48% 18px 18px;
+        border-radius: 18px;
         background: #e9e1d9;
         box-shadow: 0 24px 60px rgba(52,42,34,.12);
     }
