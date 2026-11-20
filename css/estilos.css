@@ -4029,3 +4029,90 @@ body.seleccion-abierta {
         font-size: 10px !important;
     }
 }
+
+
+/* MICROINTERACCIONES EDITORIALES: entradas suaves y zoom discreto */
+.entrada-suave {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.entrada-suave.entrada-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.encabezado {
+    transition: box-shadow .3s ease, background-color .3s ease, backdrop-filter .3s ease;
+}
+.encabezado.encabezado-desplazado {
+    background: rgba(255,255,255,.985) !important;
+    box-shadow: 0 8px 26px rgba(38,31,26,.09);
+}
+.encabezado-seccion h2 {
+    text-wrap: balance;
+}
+.encabezado-seccion .subtitulo {
+    position: relative;
+    display: inline-block;
+}
+.encabezado-seccion .subtitulo::after {
+    content: "";
+    display: block;
+    width: 34px;
+    height: 1px;
+    margin: 9px auto 0;
+    background: #b7a392;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .65s ease .15s;
+}
+.encabezado-seccion.entrada-visible .subtitulo::after {
+    transform: scaleX(1);
+}
+.tarjeta-servicio .foto-servicio,
+.tarjeta-accesorio .marco-accesorio {
+    overflow: hidden;
+}
+.tarjeta-servicio .foto-servicio img,
+.tarjeta-accesorio .marco-accesorio img {
+    transition: transform .75s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+    will-change: transform;
+}
+.tarjeta-servicio:hover .foto-servicio img,
+.tarjeta-accesorio:hover .marco-accesorio img {
+    transform: scale(1.045);
+    filter: saturate(1.04);
+}
+.imagen-portada img {
+    transition: transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.contenido-portada.portada-entrada {
+    animation: entradaPortada .9s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes entradaPortada {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (hover: none) {
+    .tarjeta-servicio:hover .foto-servicio img,
+    .tarjeta-accesorio:hover .marco-accesorio img {
+        transform: none;
+        filter: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .entrada-suave,
+    .contenido-portada.portada-entrada {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        transition: none;
+    }
+    .encabezado,
+    .encabezado-seccion .subtitulo::after,
+    .tarjeta-servicio .foto-servicio img,
+    .tarjeta-accesorio .marco-accesorio img,
+    .imagen-portada img {
+        transition: none !important;
+    }
+}
