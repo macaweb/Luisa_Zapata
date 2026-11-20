@@ -261,5 +261,29 @@
  // Realce visual para cada tarjeta al pasar el cursor o seleccionarla.
  document.querySelectorAll(".tarjeta-servicio").forEach(card=>card.addEventListener("pointerdown",()=>{card.classList.add("tarjeta-presionada");setTimeout(()=>card.classList.remove("tarjeta-presionada"),220);}));
 
+ // Efectos de entrada para elementos individuales, además de las secciones completas.
+ const elementosAnimados=[...document.querySelectorAll(".encabezado-seccion,.tarjeta-servicio,.curso-bloque,.seccion-contacto")];
+ if("IntersectionObserver" in window){
+  const entradaSuave=new IntersectionObserver((entradas,obs)=>{
+   entradas.forEach((entrada)=>{
+    if(entrada.isIntersecting){
+     entrada.target.classList.add("entrada-visible");
+     obs.unobserve(entrada.target);
+    }
+   });
+  },{threshold:.12,rootMargin:"0px 0px -35px 0px"});
+  elementosAnimados.forEach((elemento)=>{elemento.classList.add("entrada-suave");entradaSuave.observe(elemento);});
+ }else{
+  elementosAnimados.forEach((elemento)=>elemento.classList.add("entrada-visible"));
+ }
+ // El encabezado gana una sombra un poco más marcada después de iniciar el desplazamiento.
+ const encabezadoPrincipal=document.querySelector(".encabezado");
+ const actualizarEncabezado=()=>{
+  if(encabezadoPrincipal)encabezadoPrincipal.classList.toggle("encabezado-desplazado",(window.scrollY||0)>18);
+ };
+ actualizarEncabezado();
+ window.addEventListener("scroll",actualizarEncabezado,{passive:true});
+ // Entrada delicada de la portada al cargar, sin modificar el encuadre de su fotografía.
+ document.querySelector(".contenido-portada")?.classList.add("portada-entrada");
  render();
 })();
